@@ -33,7 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5B162A1228AF666900331FF0 /* TargetJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TargetJSON.json; sourceTree = "<group>"; };
 		5B162A1528AF683F00331FF0 /* API Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Caller.swift"; sourceTree = "<group>"; };
 		5B162A1728AF687500331FF0 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		5B22B5F328AE1B4A00DFC864 /* String Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Extension.swift"; sourceTree = "<group>"; };
@@ -150,7 +149,6 @@
 				5B42ADAE28AD79960098B51C /* CustomTapBar */,
 				5B42ADA028AD71BA0098B51C /* activeChats.json */,
 				5B42AD9C28AD70A50098B51C /* waitingChats.json */,
-				5B162A1228AF666900331FF0 /* TargetJSON.json */,
 				5B8302F928AD50AB005DF459 /* Assets.xcassets */,
 				5B8302FB28AD50AB005DF459 /* LaunchScreen.storyboard */,
 				5B8302FE28AD50AB005DF459 /* Info.plist */,
