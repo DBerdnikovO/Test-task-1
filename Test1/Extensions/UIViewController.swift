@@ -16,8 +16,9 @@ extension UIViewController {
      func configure<T: SelfConfigCell, U:Hashable>(collectionView: UICollectionView, cellType: T.Type, with value: U, for indexPath: IndexPath)-> T {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reusedId, for: indexPath)
                 as? T else { fatalError("Unable to dequeu \(cellType)")}
-         cell.configure(with: value)
          
+         cell.configure(with: value)
+         print("ITS CELL\(cell)")
         return cell
         
     }

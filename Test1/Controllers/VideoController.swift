@@ -66,7 +66,7 @@ class VideoController: UIViewController {
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         
         collectionView.register(MovieCells.self, forCellWithReuseIdentifier: MovieCells.reusedId)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid2")
+        collectionView.register(TVCells.self, forCellWithReuseIdentifier: TVCells.reusedId)
         collectionView.delegate = self
     }
     private func reloadData() {
@@ -101,13 +101,9 @@ extension VideoController {
             
             switch section {
             case .popularFilms:
-
                 return self.configure(collectionView: collectionView, cellType: MovieCells.self, with: title, for: indexPath)
             case .popularTVseries:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid2", for: indexPath)
-                cell.backgroundColor = .systemRed
-                return cell
-                //Свои ячейки
+                return self.configure(collectionView: collectionView, cellType: TVCells.self, with: title, for: indexPath)
             }
         })
         
@@ -144,7 +140,7 @@ extension VideoController {
                                               heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(120),
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(150),
                                                heightDimension: .absolute(220))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
@@ -163,8 +159,8 @@ extension VideoController {
                                               heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(120),
-                                               heightDimension: .absolute(220))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(130),
+                                               heightDimension: .absolute(200))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)

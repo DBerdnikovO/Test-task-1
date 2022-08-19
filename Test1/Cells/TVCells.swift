@@ -1,5 +1,5 @@
 //
-//  MovieCells.swift
+//  TVCells.swift
 //  Test1
 //
 //  Created by Данила Бердников on 19.08.2022.
@@ -9,8 +9,8 @@ import UIKit
 import Kingfisher
 
 
-class MovieCells: UICollectionViewCell, SelfConfigCell {
-    static var reusedId: String = "MovieCell"
+class TVCells: UICollectionViewCell, SelfConfigCell {
+    static var reusedId: String = "TVCells"
     
     let movieImageView = UIImageView()
     
@@ -28,7 +28,7 @@ class MovieCells: UICollectionViewCell, SelfConfigCell {
     
     func configure<U>(with value: U) where U : Hashable {
         guard let movie: Title = value as? Title else {return}
-        movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path!)"))
+        movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path ?? "")"))
     }
     
     private func setupContraints() {
