@@ -49,7 +49,7 @@ final class CustomTabBar: UIStackView {
         alignment = .center
         
         backgroundColor = .systemRed
-        setupCornerRadius(30)
+        setupCornerRadius(45)
         
         customItemViews.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false

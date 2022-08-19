@@ -7,18 +7,18 @@
 
 import UIKit
 
-struct Video: Hashable, Decodable {
-    var title: String
-    var id: Int
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: Video, rhs: Video) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
+//struct Video: Hashable, Decodable {
+//    var title: String
+//    var id: Int
+//
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//    }
+//
+//    static func == (lhs: Video, rhs: Video) -> Bool {
+//        return lhs.id == rhs.id
+//    }
+//}
 
 
 
@@ -26,11 +26,13 @@ class VideoController: UIViewController {
     
     let viewController = UIViewController()
 
-    let popularFilms = Bundle.main.decode([Video].self, from: "activeChats.json")
-    let popularTVseries = Bundle.main.decode([Video].self, from: "waitingChats.json")
+    
+    let popularFilms = Bundle.main.decode(Video.self, from: "activeChats.json")
+   
+    let popularTVseries = Bundle.main.decode(Video.self, from: "waitingChats.json")
 
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Video>?
+    var dataSource: UICollectionViewDiffableDataSource<Section, Title>?
     
     enum Section: Int, CaseIterable {
         case  popularFilms, popularTVseries
@@ -74,19 +76,21 @@ class VideoController: UIViewController {
         collectionView.backgroundColor = .black
         view.addSubview(collectionView)
         
-//        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid2")
         collectionView.delegate = self
     }
     private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Video>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Title>()
 
         snapshot.appendSections([.popularFilms, .popularTVseries])
 
-        snapshot.appendItems(popularFilms, toSection: .popularFilms)
-        snapshot.appendItems(popularTVseries, toSection: .popularTVseries)
+    
+        
+        snapshot.appendItems(popularFilms.results, toSection: .popularFilms)
+        snapshot.appendItems(popularTVseries.results, toSection: .popularTVseries)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
@@ -105,7 +109,7 @@ extension VideoController {
 
     
     func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Video>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, chat)-> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, Title>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, chat)-> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }
@@ -122,13 +126,13 @@ extension VideoController {
             }
         })
         
-//        dataSource?.supplementaryViewProvider = {
-//            collectionView, kind, indexPath in
-//            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Can not create new section header") }
-//            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
-//            sectionHeader.configurate(text: section.description(), font: .laoSngamMN20(), textColor: UIColor.mainWhite())
-//            return sectionHeader
-//        }
+        dataSource?.supplementaryViewProvider = {
+            collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Can not create new section header") }
+            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
+            sectionHeader.configurate(text: section.description(), font: .laoSngamMN20(), textColor: UIColor.mainWhite())
+            return sectionHeader
+        }
     }
 }
 
@@ -164,9 +168,9 @@ extension VideoController {
         section.interGroupSpacing = 20
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 20, bottom: 0, trailing: 20)
         section.orthogonalScrollingBehavior = .continuous
-//        
-//        let sectionHeader = sectionHeader()
-//        section.boundarySupplementaryItems = [sectionHeader]
+//
+        let sectionHeader = sectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
     
@@ -184,16 +188,16 @@ extension VideoController {
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 20, bottom: 0, trailing: 20)
         section.orthogonalScrollingBehavior = .continuous
         
-//        let sectionHeader = sectionHeader()
-//        section.boundarySupplementaryItems = [sectionHeader]
+        let sectionHeader = sectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader]
         
         return section
     }
-//    private func sectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-//        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
-//        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-//        return sectionHeader
-//    }
+    private func sectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        return sectionHeader
+    }
 }
 
 
