@@ -63,7 +63,7 @@ class VideoController: UIViewController {
         self.parent?.title = "Movve"
         
         super.viewWillAppear(animated)
-            var nav = self.navigationController?.navigationBar
+        let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.black
             nav?.tintColor = UIColor.white
     }
