@@ -6,20 +6,7 @@
 //
 
 import UIKit
-
-//struct Video: Hashable, Decodable {
-//    var title: String
-//    var id: Int
-//
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
-//
-//    static func == (lhs: Video, rhs: Video) -> Bool {
-//        return lhs.id == rhs.id
-//    }
-//}
-
+import Kingfisher
 
 
 class VideoController: UIViewController {
@@ -78,7 +65,7 @@ class VideoController: UIViewController {
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
+        collectionView.register(MovieCells.self, forCellWithReuseIdentifier: MovieCells.reusedId)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid2")
         collectionView.delegate = self
     }
@@ -86,8 +73,6 @@ class VideoController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Title>()
 
         snapshot.appendSections([.popularFilms, .popularTVseries])
-
-    
         
         snapshot.appendItems(popularFilms.results, toSection: .popularFilms)
         snapshot.appendItems(popularTVseries.results, toSection: .popularTVseries)
@@ -109,20 +94,20 @@ extension VideoController {
 
     
     func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Title>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, chat)-> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, Title>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, title)-> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }
             
             switch section {
             case .popularFilms:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath)
-                cell.backgroundColor = .systemBlue
-                return cell
+
+                return self.configure(collectionView: collectionView, cellType: MovieCells.self, with: title, for: indexPath)
             case .popularTVseries:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid2", for: indexPath)
                 cell.backgroundColor = .systemRed
                 return cell
+                //Свои ячейки
             }
         })
         
@@ -168,7 +153,6 @@ extension VideoController {
         section.interGroupSpacing = 20
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 20, bottom: 0, trailing: 20)
         section.orthogonalScrollingBehavior = .continuous
-//
         let sectionHeader = sectionHeader()
         section.boundarySupplementaryItems = [sectionHeader]
         return section
@@ -200,12 +184,6 @@ extension VideoController {
     }
 }
 
-
-extension VideoController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
-    }
-}
 // MARK: - SwiftUI
 import SwiftUI
 
