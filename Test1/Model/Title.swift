@@ -10,8 +10,6 @@ import Foundation
 struct Video: Hashable, Codable {
 
   let results: [Title]
-    
-    
 }
 
 struct Title: Hashable, Codable {

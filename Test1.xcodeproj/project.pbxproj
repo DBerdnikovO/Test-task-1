@@ -12,7 +12,6 @@
 		5B0DDFBA28B29835009BE692 /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B0DDFB928B29835009BE692 /* waitingChats.json */; };
 		5B1347BA28AFC0920053C898 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1347B928AFC0920053C898 /* Kingfisher */; };
 		5B1347BC28AFC27B0053C898 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347BB28AFC27B0053C898 /* SectionHeader.swift */; };
-		5B1347BE28AFC2C30053C898 /* TitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347BD28AFC2C30053C898 /* TitleViewModel.swift */; };
 		5B1347C028AFC8120053C898 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347BF28AFC8120053C898 /* UIViewController.swift */; };
 		5B1347C228AFC8340053C898 /* SelfConfigCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347C128AFC8340053C898 /* SelfConfigCellProtocol.swift */; };
 		5B1347C528AFC92E0053C898 /* MovieCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347C428AFC92E0053C898 /* MovieCells.swift */; };
@@ -45,7 +44,6 @@
 		5B0DDFB728B29830009BE692 /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
 		5B0DDFB928B29835009BE692 /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
 		5B1347BB28AFC27B0053C898 /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
-		5B1347BD28AFC2C30053C898 /* TitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewModel.swift; sourceTree = "<group>"; };
 		5B1347BF28AFC8120053C898 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		5B1347C128AFC8340053C898 /* SelfConfigCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfigCellProtocol.swift; sourceTree = "<group>"; };
 		5B1347C428AFC92E0053C898 /* MovieCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCells.swift; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				5B162A1728AF687500331FF0 /* Title.swift */,
-				5B1347BD28AFC2C30053C898 /* TitleViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,7 +290,6 @@
 				5B42ADA428AD72E00098B51C /* MainTabBarController.swift in Sources */,
 				5B8302F128AD50AB005DF459 /* AppDelegate.swift in Sources */,
 				5B8302F328AD50AB005DF459 /* SceneDelegate.swift in Sources */,
-				5B1347BE28AFC2C30053C898 /* TitleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
