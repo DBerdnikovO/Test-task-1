@@ -60,7 +60,7 @@ class VideoController: UIViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .red
         view.addSubview(collectionView)
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
@@ -141,13 +141,13 @@ extension VideoController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(150),
-                                               heightDimension: .absolute(220))
+                                               heightDimension: .absolute(250))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 20, bottom: 0, trailing: 20)
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)
         section.orthogonalScrollingBehavior = .continuous
         let sectionHeader = sectionHeader()
         section.boundarySupplementaryItems = [sectionHeader]
@@ -160,16 +160,15 @@ extension VideoController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(130),
-                                               heightDimension: .absolute(200))
+                                               heightDimension: .absolute(220))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 20, bottom: 0, trailing: 20)
-        section.orthogonalScrollingBehavior = .continuous
-        
         let sectionHeader = sectionHeader()
         section.boundarySupplementaryItems = [sectionHeader]
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 20, bottom: 0, trailing: 20)
+        section.orthogonalScrollingBehavior = .continuous
         
         return section
     }

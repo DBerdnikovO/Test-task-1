@@ -25,6 +25,7 @@ struct Title: Hashable, Codable {
     let vote_count: Int?
     let release_date: String?
     let vote_average: Double?
+    let first_air_date: String?
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

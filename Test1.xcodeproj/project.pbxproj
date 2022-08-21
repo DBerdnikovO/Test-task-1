@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0DDFB628B27201009BE692 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0DDFB528B27201009BE692 /* UILabel.swift */; };
 		5B1347BA28AFC0920053C898 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1347B928AFC0920053C898 /* Kingfisher */; };
 		5B1347BC28AFC27B0053C898 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347BB28AFC27B0053C898 /* SectionHeader.swift */; };
 		5B1347BE28AFC2C30053C898 /* TitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347BD28AFC2C30053C898 /* TitleViewModel.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B0DDFB528B27201009BE692 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		5B1347BB28AFC27B0053C898 /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		5B1347BD28AFC2C30053C898 /* TitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewModel.swift; sourceTree = "<group>"; };
 		5B1347BF28AFC8120053C898 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				5B42AD9E28AD712C0098B51C /* Bundle.swift */,
 				5B1347BF28AFC8120053C898 /* UIViewController.swift */,
+				5B0DDFB528B27201009BE692 /* UILabel.swift */,
 				5BDAF4E128AE2A6900B2716F /* Color.swift */,
 				5BDAF4E328AE2A8A00B2716F /* Font.swift */,
 				5B22B5F328AE1B4A00DFC864 /* String Extension.swift */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0DDFB628B27201009BE692 /* UILabel.swift in Sources */,
 				5B8302F528AD50AB005DF459 /* VideoController.swift in Sources */,
 				5B42ADA628AD73140098B51C /* ProfileController.swift in Sources */,
 				5BDAF4E428AE2A8A00B2716F /* Font.swift in Sources */,
