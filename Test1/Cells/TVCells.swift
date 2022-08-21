@@ -31,7 +31,6 @@ class TVCells: UICollectionViewCell, SelfConfigCell {
     func configure<U>(with value: U) where U : Hashable {
         guard let movie: Title = value as? Title else {return}
         title.text = movie.original_name
-        print(movie.original_name)
         date.text = reFormat(from: movie.first_air_date ?? "ERROR")
         movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path ?? "")"))
     }

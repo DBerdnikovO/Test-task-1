@@ -22,8 +22,7 @@ class APICaller {
     
     static let shared = APICaller()
     
-    func getTrendingMovies(completion: @escaping (Result<[Title], Error>) -> Void) {
-        print("ITS TRANDING MOVIE")
+    func getTrendingMovies(completion: @escaping (Result<Video, Error>) -> Void) {
         guard let url = URL(string: "\(Constants.baseURL)/3/trending/movie/day?api_key=\(Constants.API_KEY)") else {return}
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data, error == nil else {
@@ -32,7 +31,26 @@ class APICaller {
 
             do {
                 let results = try JSONDecoder().decode(Video.self, from: data)
-                completion(.success(results.results))
+                completion(.success(results))
+                
+            } catch {
+                completion(.failure(APIError.failedTogetData))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func getTrendingTVs(completion: @escaping (Result<Video, Error>) -> Void) {
+        guard let url = URL(string: "\(Constants.baseURL)/3/trending/tv/day?api_key=\(Constants.API_KEY)") else {return}
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
+            guard let data = data, error == nil else {
+                return
+            }
+
+            do {
+                let results = try JSONDecoder().decode(Video.self, from: data)
+                completion(.success(results))
                 
             } catch {
                 completion(.failure(APIError.failedTogetData))

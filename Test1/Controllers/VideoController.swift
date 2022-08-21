@@ -11,12 +11,14 @@ import Kingfisher
 
 class VideoController: UIViewController {
     
+    
+    
     let viewController = UIViewController()
 
+    private var movies = [Title]()
     
-    let popularFilms = Bundle.main.decode(Video.self, from: "activeChats.json")
-   
-    let popularTVseries = Bundle.main.decode(Video.self, from: "waitingChats.json")
+    private var TVs = [Title]()
+
 
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Title>?
@@ -44,6 +46,38 @@ class VideoController: UIViewController {
         setupCollectionView()
         createDataSource()
         reloadData()
+        
+        APICaller.shared.getTrendingMovies { result in
+            switch result {
+                
+            case .success(let result):
+                if result.results.count != 0 {
+                    self.movies = result.results
+                    
+                    self.reloadData()
+                }
+
+            case .failure(let error):
+                self.showAlert(with: "ERRO", and: error.localizedDescription)
+            }
+        }
+        
+        APICaller.shared.getTrendingTVs { result in
+            switch result {
+                
+            case .success(let result):
+                if result.results.count != 0 {
+                    self.TVs = result.results
+                    
+                    self.reloadData()
+                }
+
+            case .failure(let error):
+                self.showAlert(with: "ERRO", and: error.localizedDescription)
+            }
+        }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,8 +108,8 @@ class VideoController: UIViewController {
 
         snapshot.appendSections([.popularFilms, .popularTVseries])
         
-        snapshot.appendItems(popularFilms.results, toSection: .popularFilms)
-        snapshot.appendItems(popularTVseries.results, toSection: .popularTVseries)
+        snapshot.appendItems(movies, toSection: .popularFilms)
+        snapshot.appendItems(TVs, toSection: .popularTVseries)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
