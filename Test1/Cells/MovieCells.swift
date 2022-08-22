@@ -78,6 +78,10 @@ class MovieCells: UICollectionViewCell, SelfConfigCell {
         toFormatter.locale = Locale(identifier: "en_US_POSIX")
       toFormatter.dateFormat = "MMM d, yyyy"
 
+        
+        
+        
+        
       guard let date = fromFormatter.date(from: dateStr) else { return nil }
 
       return toFormatter.string(from: date)
