@@ -34,6 +34,7 @@ class MovieCells: UICollectionViewCell, SelfConfigCell {
         title.text = movie.original_title
         title.textColor = .titleColor()
         
+        print(movie.id, movie.original_title)
         date.text = reFormat(from: movie.release_date ?? "ERROR")
         date.textColor = .dateColor()
         

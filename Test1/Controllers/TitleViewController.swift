@@ -50,9 +50,9 @@ class TitleViewController: UIViewController {
         view.backgroundColor = .backgroundColor()
         
         setupConstraints()
-//        
-//        
-//        APICaller.shared.getCast(movieID: String(titleMovie.id)) { result in
+        
+//      СЛИШКОМ СЛОЖНАЯ ОПЕРАЦИЯ
+//        APICaller.shared.getCast(ID: String(titleMovie.id), type: titleMovie.media_type ?? "") { result in
 //            switch result {
 //
 //            case .success(let result):
