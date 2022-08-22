@@ -16,6 +16,7 @@ struct Title: Hashable, Codable {
     let id: Int
     let title: String?
     let media_type: String?
+    let backdrop_path: String?
     let original_name: String?
     let original_title: String?
     let poster_path: String?

@@ -94,7 +94,7 @@ class VideoController: UIViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .backgroundColor()
         view.addSubview(collectionView)
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
@@ -117,7 +117,18 @@ class VideoController: UIViewController {
 
 extension VideoController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        guard let title = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        
+        guard let section = Section(rawValue: indexPath.section) else {return }
+        
+        switch section {
+        case .popularFilms:
+             let titleInfo = TitleViewController(title: title)
+            self.present(titleInfo, animated: true)
+        case .popularTVseries:
+            let titleInfo = TitleViewController(title: title)
+           self.present(titleInfo, animated: true)
+        }
         
     }
 }
@@ -145,7 +156,7 @@ extension VideoController {
             collectionView, kind, indexPath in
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Can not create new section header") }
             guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
-            sectionHeader.configurate(text: section.description(), font: .laoSngamMN20(), textColor: UIColor.mainWhite())
+            sectionHeader.configurate(text: section.description(), font: .laoSngamMN20(), textColor: UIColor.titleColor())
             return sectionHeader
         }
     }
