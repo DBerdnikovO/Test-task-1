@@ -124,9 +124,11 @@ extension VideoController: UICollectionViewDelegate {
         switch section {
         case .popularFilms:
              let titleInfo = TitleViewController(title: title)
+            
             self.present(titleInfo, animated: true)
         case .popularTVseries:
             let titleInfo = TitleViewController(title: title)
+            
            self.present(titleInfo, animated: true)
         }
         

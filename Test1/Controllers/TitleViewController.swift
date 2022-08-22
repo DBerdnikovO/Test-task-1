@@ -49,17 +49,21 @@ class TitleViewController: UIViewController {
     
     private func setupConstraints() {
         
+        image.clipsToBounds = true
+        image.contentMode = .scaleToFill
+        
         image.translatesAutoresizingMaskIntoConstraints = false
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         titleName.translatesAutoresizingMaskIntoConstraints = false
         overview.translatesAutoresizingMaskIntoConstraints = false
         
+        overview.numberOfLines = 0
+        overview.lineBreakMode = NSLineBreakMode.byWordWrapping
+        
         view.addSubview(image)
         view.addSubview(gradientView)
         view.addSubview(titleName)
         view.addSubview(overview)
-        
-        let textStackView = UIStackView(arrangedSubviews: <#T##[UIView]#>)
         
         NSLayoutConstraint.activate([
             image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -83,11 +87,9 @@ class TitleViewController: UIViewController {
         NSLayoutConstraint.activate([
             overview.topAnchor.constraint(equalTo: gradientView.bottomAnchor),
             overview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            overview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+          //  overview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             overview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
         
-        
-
     }
 }

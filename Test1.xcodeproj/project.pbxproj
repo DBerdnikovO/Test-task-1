@@ -29,6 +29,7 @@
 		5B42ADB628AD79A80098B51C /* CustomItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADB128AD79A80098B51C /* CustomItemView.swift */; };
 		5B42ADB728AD79A80098B51C /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADB228AD79A80098B51C /* CustomTabBarController.swift */; };
 		5B42ADB828AD79A80098B51C /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADB328AD79A80098B51C /* CustomTabBar.swift */; };
+		5B61DA0F28B4191E004EBED0 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61DA0E28B4191E004EBED0 /* UIStackView.swift */; };
 		5B8302F128AD50AB005DF459 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8302F028AD50AB005DF459 /* AppDelegate.swift */; };
 		5B8302F328AD50AB005DF459 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8302F228AD50AB005DF459 /* SceneDelegate.swift */; };
 		5B8302F528AD50AB005DF459 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8302F428AD50AB005DF459 /* VideoController.swift */; };
@@ -61,6 +62,7 @@
 		5B42ADB128AD79A80098B51C /* CustomItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomItemView.swift; sourceTree = "<group>"; };
 		5B42ADB228AD79A80098B51C /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		5B42ADB328AD79A80098B51C /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		5B61DA0E28B4191E004EBED0 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		5B8302ED28AD50AB005DF459 /* Test1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8302F028AD50AB005DF459 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B8302F228AD50AB005DF459 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				5B0DDFB528B27201009BE692 /* UILabel.swift */,
 				5BDAF4E128AE2A6900B2716F /* Color.swift */,
 				5BDAF4E328AE2A8A00B2716F /* Font.swift */,
+				5B61DA0E28B4191E004EBED0 /* UIStackView.swift */,
 				5BABB3C028B404900044D79A /* Gradient.swift */,
 				5B22B5F328AE1B4A00DFC864 /* String Extension.swift */,
 			);
@@ -288,6 +291,7 @@
 				5B1347C228AFC8340053C898 /* SelfConfigCellProtocol.swift in Sources */,
 				5B42ADB728AD79A80098B51C /* CustomTabBarController.swift in Sources */,
 				5B42ADB828AD79A80098B51C /* CustomTabBar.swift in Sources */,
+				5B61DA0F28B4191E004EBED0 /* UIStackView.swift in Sources */,
 				5B42ADB428AD79A80098B51C /* CustomTabItem.swift in Sources */,
 				5B22B5F428AE1B4A00DFC864 /* String Extension.swift in Sources */,
 				5B42ADB628AD79A80098B51C /* CustomItemView.swift in Sources */,
