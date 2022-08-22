@@ -13,7 +13,7 @@ struct Cast: Hashable, Codable {
     let cast : [CastResult]
 }
 
-struct CastResult:  Hashable, Codable {
+struct CastResult: Hashable, Codable {
     
     let id: Int
     let name: String?

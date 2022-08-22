@@ -10,12 +10,17 @@ import UIKit
 
 class TitleViewController: UIViewController {
     
+    private var titleMovie : Title
+    private var casts = [CastResult]()
+    
+    
     let image = UIImageView()
     let overview = UILabel(text: "")
     let titleName = UILabel(text: "")
     let gradientView = Gradient(from: .top, to: .bottom, startColor: #colorLiteral(red: 0.3159078062, green: 0.3159078062, blue: 0.3159078062, alpha: 1), endColor: .backgroundColor())
     
     init(title: Title){
+        titleMovie = title
         titleName.textColor = .titleColor()
         titleName.font = UIFont.systemFont(ofSize: 30)
         if title.original_title != nil {
@@ -45,6 +50,17 @@ class TitleViewController: UIViewController {
         view.backgroundColor = .backgroundColor()
         
         setupConstraints()
+//        
+//        
+//        APICaller.shared.getCast(movieID: String(titleMovie.id)) { result in
+//            switch result {
+//
+//            case .success(let result):
+//                print(result)
+//            case .failure(let error):
+//                self.showAlert(with: "ERROR", and: error.localizedDescription)
+//            }
+//        }
     }
     
     private func setupConstraints() {
