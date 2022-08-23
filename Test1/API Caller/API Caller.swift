@@ -60,8 +60,9 @@ class APICaller {
         
         task.resume()
     }
+    
     //https://api.themoviedb.org/3/movie/361743?api_key=697d439ac993538da4e3e60b54e762cd&language=en-US&append_to_response=credits
-    func getCast(ID: String , type: String, completion: @escaping (Result<Cast, Error>) -> Void) {
+    func getCast(ID: String , type: String, completion: @escaping (Result<CastResult, Error>) -> Void) {
         guard let url = URL(string: "\(Constants.baseURL)/3/\(type)/\(ID)?api_key=\(Constants.API_KEY)&language=en-US&append_to_response=credits") else {return}
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data, error == nil else {
@@ -70,7 +71,7 @@ class APICaller {
 
             do {
                 let results = try JSONDecoder().decode(Cast.self, from: data)
-                completion(.success(results))
+                completion(.success(results.cast[0]))
                 
             } catch {
                 completion(.failure(APIError.failedTogetData))

@@ -12,8 +12,6 @@ import Kingfisher
 class MovieCells: UICollectionViewCell, SelfConfigCell {
     static var reusedId: String = "MovieCell"
     
-    //Название
-    //Дата выхода
     let title = UILabel(text: "title")
     let date = UILabel(text: "date")
     let movieImageView = UIImageView()
@@ -33,12 +31,14 @@ class MovieCells: UICollectionViewCell, SelfConfigCell {
         guard let movie: Title = value as? Title else {return}
         title.text = movie.original_title
         title.textColor = .titleColor()
+        title.adjustsFontSizeToFitWidth = true
         
-        print(movie.id, movie.original_title)
         date.text = reFormat(from: movie.release_date ?? "ERROR")
         date.textColor = .dateColor()
         
-        movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path!)"))
+        DispatchQueue.main.async {
+            self.movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path!)"))
+        }
     }
     
     private func setupContraints() {

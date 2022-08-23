@@ -37,6 +37,8 @@ class TitleViewController: UIViewController {
         
         
         image.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(title.backdrop_path ?? "")"))
+        
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -52,15 +54,22 @@ class TitleViewController: UIViewController {
         setupConstraints()
         
 //      СЛИШКОМ СЛОЖНАЯ ОПЕРАЦИЯ
-//        APICaller.shared.getCast(ID: String(titleMovie.id), type: titleMovie.media_type ?? "") { result in
-//            switch result {
-//
-//            case .success(let result):
-//                print(result)
-//            case .failure(let error):
-//                self.showAlert(with: "ERROR", and: error.localizedDescription)
+       // getCast()
+    }
+    
+    private func getCast() {
+        APICaller.shared.getCast(ID: String(titleMovie.id), type: titleMovie.media_type ?? "") { [weak self] result in
+//            DispatchQueue.main.async {
+            
+            switch result {
+
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                self?.showAlert(with: "ERROR", and: error.localizedDescription)
+            }
 //            }
-//        }
+        }
     }
     
     private func setupConstraints() {

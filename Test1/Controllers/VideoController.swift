@@ -46,35 +46,10 @@ class VideoController: UIViewController {
         setupCollectionView()
         createDataSource()
         reloadData()
-        
-        APICaller.shared.getTrendingMovies { result in
-            switch result {
-                
-            case .success(let result):
-                if result.results.count != 0 {
-                    self.movies = result.results
-                    
-                    self.reloadData()
-                }
 
-            case .failure(let error):
-                self.showAlert(with: "ERRO", and: error.localizedDescription)
-            }
-        }
-        
-        APICaller.shared.getTrendingTVs { result in
-            switch result {
-                
-            case .success(let result):
-                if result.results.count != 0 {
-                    self.TVs = result.results
-                    
-                    self.reloadData()
-                }
-
-            case .failure(let error):
-                self.showAlert(with: "ERRO", and: error.localizedDescription)
-            }
+        DispatchQueue.main.async {
+            self.getTrandingMovies()
+            self.getTrandingTVs()
         }
         
         
@@ -89,7 +64,42 @@ class VideoController: UIViewController {
             nav?.tintColor = UIColor.white
     }
     
+    private func getTrandingMovies() {
+        APICaller.shared.getTrendingMovies { [weak self] result in
+                switch result {
+                    
+                case .success(let result):
+                    if result.results.count != 0 {
+                        self?.movies = result.results
+                        
+                        self?.reloadData()
+                    }
+
+                case .failure(let error):
+                    self?.showAlert(with: "ERROR", and: error.localizedDescription)
+                }
+
+            }
         
+    }
+    
+    private func getTrandingTVs() {
+        APICaller.shared.getTrendingTVs { [weak self] result in
+                switch result {
+                    
+                case .success(let result):
+                    if result.results.count != 0 {
+                        self?.TVs = result.results
+                        
+                        self?.reloadData()
+                    }
+
+                case .failure(let error):
+                    self?.showAlert(with: "ERROR", and: error.localizedDescription)
+                }
+        }
+
+    }
     
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
@@ -116,20 +126,28 @@ class VideoController: UIViewController {
 }
 
 extension VideoController: UICollectionViewDelegate {
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let title = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        
         
         guard let section = Section(rawValue: indexPath.section) else {return }
         
         switch section {
         case .popularFilms:
-             let titleInfo = TitleViewController(title: title)
-            
-            self.present(titleInfo, animated: true)
+            DispatchQueue.main.async { [weak self] in
+                let titleInfo = TitleViewController(title: title)
+               
+                self?.present(titleInfo, animated: true)
+            }
         case .popularTVseries:
-            let titleInfo = TitleViewController(title: title)
-            
-           self.present(titleInfo, animated: true)
+            DispatchQueue.main.async { [weak self] in
+                let titleInfo = TitleViewController(title: title)
+               
+                self?.present(titleInfo, animated: true)
+            }
         }
         
     }
