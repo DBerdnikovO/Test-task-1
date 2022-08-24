@@ -21,9 +21,7 @@ extension UIColor {
     static func dateColor() -> UIColor {
         return #colorLiteral(red: 0.5723067522, green: 0.5723067522, blue: 0.5723067522, alpha: 1)
     }
-    static func textFieldLight() -> UIColor {
-        return #colorLiteral(red: 0.8968794346, green: 0.9010159373, blue: 0.8972654343, alpha: 1)
-    }
+
     static func backgroundColor() -> UIColor {
         return #colorLiteral(red: 0.1796403825, green: 0.1629047394, blue: 0.2122661471, alpha: 1)
     }

@@ -18,8 +18,7 @@ class VideoController: UIViewController {
     private var movies = [Title]()
     
     private var TVs = [Title]()
-
-
+    
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Title>?
     
@@ -41,6 +40,7 @@ class VideoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         viewController.navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
         setupCollectionView()
@@ -101,6 +101,9 @@ class VideoController: UIViewController {
 
     }
     
+    
+
+    
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -137,17 +140,12 @@ extension VideoController: UICollectionViewDelegate {
         
         switch section {
         case .popularFilms:
-            DispatchQueue.main.async { [weak self] in
-                let titleInfo = TitleViewController(title: title)
-               
-                self?.present(titleInfo, animated: true)
-            }
+                //let titleInfo = TitleViewController(title: title)
+            let titleInfo = TitleViewController(title: title)
+               present(titleInfo, animated: true)
         case .popularTVseries:
-            DispatchQueue.main.async { [weak self] in
-                let titleInfo = TitleViewController(title: title)
-               
-                self?.present(titleInfo, animated: true)
-            }
+            let titleInfo = TitleViewController(title: title)
+               present(titleInfo, animated: true)
         }
         
     }

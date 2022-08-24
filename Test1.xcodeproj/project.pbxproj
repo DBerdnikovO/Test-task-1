@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B031F8E28B65C9500648DCB /* CastCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B031F8D28B65C9500648DCB /* CastCells.swift */; };
 		5B0DDFB628B27201009BE692 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0DDFB528B27201009BE692 /* UILabel.swift */; };
 		5B0DDFB828B29830009BE692 /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B0DDFB728B29830009BE692 /* activeChats.json */; };
 		5B0DDFBA28B29835009BE692 /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B0DDFB928B29835009BE692 /* waitingChats.json */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B031F8D28B65C9500648DCB /* CastCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCells.swift; sourceTree = "<group>"; };
 		5B0DDFB528B27201009BE692 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		5B0DDFB728B29830009BE692 /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
 		5B0DDFB928B29835009BE692 /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				5B1347C428AFC92E0053C898 /* MovieCells.swift */,
 				5BE0C1CC28AFF620008E9AF6 /* TVCells.swift */,
+				5B031F8D28B65C9500648DCB /* CastCells.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				5B1347BC28AFC27B0053C898 /* SectionHeader.swift in Sources */,
 				5BDAF4E228AE2A6900B2716F /* Color.swift in Sources */,
 				5B42ADA428AD72E00098B51C /* MainTabBarController.swift in Sources */,
+				5B031F8E28B65C9500648DCB /* CastCells.swift in Sources */,
 				5B8302F128AD50AB005DF459 /* AppDelegate.swift in Sources */,
 				5B8302F328AD50AB005DF459 /* SceneDelegate.swift in Sources */,
 				5BABB3C128B404900044D79A /* Gradient.swift in Sources */,

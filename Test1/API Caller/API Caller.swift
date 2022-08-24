@@ -21,9 +21,14 @@ enum APIError: Error {
 
 class APICaller {
     
+    var moviesDict: [Int: [Title]] = [:]
+    
     static let shared = APICaller()
     
     func getTrendingMovies(completion: @escaping (Result<Video, Error>) -> Void) {
+        
+        var a = 0
+        
         guard let url = URL(string: "\(Constants.baseURL)/3/trending/movie/day?api_key=\(Constants.API_KEY)") else {return}
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data, error == nil else {
@@ -32,13 +37,15 @@ class APICaller {
 
             do {
                 let results = try JSONDecoder().decode(Video.self, from: data)
+                self.moviesDict[a] = results.results
                 completion(.success(results))
                 
             } catch {
                 completion(.failure(APIError.failedTogetData))
             }
         }
-        
+        a += 1
+        print("AAAA\(moviesDict.count)")
         task.resume()
     }
     
@@ -61,9 +68,9 @@ class APICaller {
         task.resume()
     }
     
-    //https://api.themoviedb.org/3/movie/361743?api_key=697d439ac993538da4e3e60b54e762cd&language=en-US&append_to_response=credits
-    func getCast(ID: String , type: String, completion: @escaping (Result<CastResult, Error>) -> Void) {
-        guard let url = URL(string: "\(Constants.baseURL)/3/\(type)/\(ID)?api_key=\(Constants.API_KEY)&language=en-US&append_to_response=credits") else {return}
+
+    func getCast(id: String, type: String, completion: @escaping (Result<Cast, Error>) -> Void) {
+        guard let url = URL(string: "https://api.themoviedb.org/3/\(type)/\(id)/credits?api_key=697d439ac993538da4e3e60b54e762cd") else {return}
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data, error == nil else {
                 return
@@ -71,14 +78,14 @@ class APICaller {
 
             do {
                 let results = try JSONDecoder().decode(Cast.self, from: data)
-                completion(.success(results.cast[0]))
-                
+                completion(.success(results))
+
             } catch {
                 completion(.failure(APIError.failedTogetData))
             }
         }
-        
+
         task.resume()
     }
-    
+
 }

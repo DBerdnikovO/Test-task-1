@@ -11,8 +11,19 @@ import UIKit
 class TitleViewController: UIViewController {
     
     private var titleMovie : Title
-    private var casts = [CastResult]()
+    //private var casts = [CastResult]()
     
+    private var castInfo = [CastResult]()
+    
+   // let cast = Bundle.main.decode(Cast.self, from: "activeChats.json")
+    
+    
+    enum Section: Int, CaseIterable {
+        case  casts
+    }
+    
+    var dataSource: UICollectionViewDiffableDataSource<Section, CastResult>?
+    var collectionView: UICollectionView!
     
     let image = UIImageView()
     let overview = UILabel(text: "")
@@ -51,70 +62,107 @@ class TitleViewController: UIViewController {
         
         view.backgroundColor = .backgroundColor()
         
-        setupConstraints()
-        
-//      СЛИШКОМ СЛОЖНАЯ ОПЕРАЦИЯ
-       // getCast()
-    }
-    
-    private func getCast() {
-        APICaller.shared.getCast(ID: String(titleMovie.id), type: titleMovie.media_type ?? "") { [weak self] result in
-//            DispatchQueue.main.async {
-            
-            switch result {
-
-            case .success(let result):
-                print(result)
-            case .failure(let error):
-                self?.showAlert(with: "ERROR", and: error.localizedDescription)
-            }
-//            }
+     //   setupConstraints()
+        setupCollectionView()
+        createDataSource()
+        reloadData()
+        DispatchQueue.main.async {
+            self.getCast()
         }
     }
     
-    private func setupConstraints() {
-        
-        image.clipsToBounds = true
-        image.contentMode = .scaleToFill
-        
-        image.translatesAutoresizingMaskIntoConstraints = false
-        gradientView.translatesAutoresizingMaskIntoConstraints = false
-        titleName.translatesAutoresizingMaskIntoConstraints = false
-        overview.translatesAutoresizingMaskIntoConstraints = false
-        
-        overview.numberOfLines = 0
-        overview.lineBreakMode = NSLineBreakMode.byWordWrapping
-        
-        view.addSubview(image)
-        view.addSubview(gradientView)
-        view.addSubview(titleName)
-        view.addSubview(overview)
-        
-        NSLayoutConstraint.activate([
-            image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            image.topAnchor.constraint(equalTo: view.topAnchor),
-//            image.widthAnchor.constraint(equalTo: view.widthAnchor),
-            image.heightAnchor.constraint(equalToConstant: 380)
-        ])
-        
-        NSLayoutConstraint.activate([
-            gradientView.topAnchor.constraint(equalTo: image.bottomAnchor, constant: -15),
-            gradientView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            gradientView.heightAnchor.constraint(equalToConstant: 60)
-        ])
+    private func getCast() {
+        APICaller.shared.getCast(id: String(titleMovie.id), type: titleMovie.media_type ?? "ad") { [weak self] result in
+           DispatchQueue.main.async {
 
-        NSLayoutConstraint.activate([
-            titleName.topAnchor.constraint(equalTo: gradientView.topAnchor),
-            titleName.centerXAnchor.constraint(equalTo: gradientView.centerXAnchor),
-            titleName.bottomAnchor.constraint(equalTo: gradientView.bottomAnchor)
-        ])
+            switch result {
 
-        NSLayoutConstraint.activate([
-            overview.topAnchor.constraint(equalTo: gradientView.bottomAnchor),
-            overview.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-          //  overview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            overview.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
-        ])
+            case .success(let result):
+                self?.castInfo=result.cast
+             //   print("COUNT\(result.cast.count)")
+             //   print(result)
+                self?.reloadData()
+            case .failure(let error):
+                self?.showAlert(with: "ERROR", and: error.localizedDescription)
+            }
+            }
+        }
+    }
+    
+    private func setupCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         
+        
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        //collectionView.backgroundColor = .blue
+        view.addSubview(collectionView)
+        collectionView.isPagingEnabled
+        
+        collectionView.register(CastCells.self, forCellWithReuseIdentifier: CastCells.reusedId)
+        
+    }
+    
+    private func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, CastResult>()
+        
+        snapshot.appendSections([.casts])
+        
+       // print(cast)
+        snapshot.appendItems(castInfo, toSection: .casts)
+
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+    
+    
+}
+
+extension TitleViewController {
+    private func createDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, CastResult>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, cast) -> UICollectionViewCell? in
+            guard let section = Section(rawValue: indexPath.section) else {
+                fatalError("Unknown section kind")
+            }
+            
+            switch section {
+            case .casts:
+                print("CASTS")
+               // print(cast.name ?? "error")
+                return self.configure(collectionView: collectionView, cellType: CastCells.self, with: cast, for: indexPath)
+            }
+        })
+    }
+}
+
+extension TitleViewController {
+    private func createCompositionalLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { (senctionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            
+            guard let section = Section(rawValue: senctionIndex) else {
+                fatalError("Unknown section kind")
+            }
+        
+            switch section {
+            case .casts:
+                return self.createCasts()
+            }
+        }
+        return layout
+    }
+    
+    private func createCasts() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(150),
+                                               heightDimension: .absolute(250))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 20
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)
+        section.orthogonalScrollingBehavior = .continuous
+        return section
     }
 }
