@@ -15,8 +15,6 @@ class TitleViewController: UIViewController {
     
     private var castInfo : Cast
     
-   // let cast = Bundle.main.decode(Cast.self, from: "activeChats.json")
-    
     
     enum Section: Int, CaseIterable {
         case  casts
@@ -46,10 +44,7 @@ class TitleViewController: UIViewController {
         overview.numberOfLines = 5
         overview.lineBreakMode = NSLineBreakMode.byWordWrapping
         
-        //let universityJoinChatViewModel = UniversityJoinChatViewModel(nameOfModel: universityGroupChatItem)
-        
-       
-        
+
         image.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(title.backdrop_path ?? "")"))
         castInfo = Cast(title: nil, cast: nil)
         
@@ -64,9 +59,7 @@ class TitleViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .backgroundColor()
-        
-    
-     //   setupConstraints()
+
         setupCollectionView()
         createDataSource()
         reloadData()
@@ -82,12 +75,7 @@ class TitleViewController: UIViewController {
             switch result {
 
             case .success(let result):
-            //  БЫЛО  self?.castInfo=result.cast
                 self?.castInfo = Cast(title: self?.titleMovie, cast: result.cast)
-                print(self?.castInfo.title)
-        //        self?.castInfo[0].original_title
-             //   print("COUNT\(result.cast.count)")
-             //   print(result)
                 self?.reloadData()
             case .failure(let error):
                 self?.showAlert(with: "ERROR", and: error.localizedDescription)
@@ -101,7 +89,6 @@ class TitleViewController: UIViewController {
         
         
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        //collectionView.backgroundColor = .blue
         view.addSubview(collectionView)
         
         collectionView.register(CastCells.self, forCellWithReuseIdentifier: CastCells.reusedId)
@@ -112,8 +99,6 @@ class TitleViewController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, CastResult>()
         
         snapshot.appendSections([.casts])
-        
-       // print(cast)
         snapshot.appendItems(castInfo.cast ?? casts, toSection: .casts)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
@@ -132,7 +117,6 @@ extension TitleViewController {
             switch section {
             case .casts:
                 print("CASTS")
-               // print(cast.name ?? "error")
                 return self.configure(collectionView: collectionView, cellType: CastCells.self, with: cast, for: indexPath)
             }
         })

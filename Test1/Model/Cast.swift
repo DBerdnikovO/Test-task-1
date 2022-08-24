@@ -14,10 +14,9 @@ struct Cast: Hashable, Codable {
     var title: Title?
     
     
-    public init(title model: Title?,cast: [CastResult]?) {
+    public init(title model: Title?, cast: [CastResult]?) {
         
         self.cast = cast
-      //  self.profile_path = cast?.profile_path
         self.title = model
     }
     
