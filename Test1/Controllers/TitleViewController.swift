@@ -11,9 +11,9 @@ import UIKit
 class TitleViewController: UIViewController {
     
     private var titleMovie : Title
-    //private var casts = [CastResult]()
+    private var casts = [CastResult]()
     
-    private var castInfo = [CastResult]()
+    private var castInfo : Cast
     
    // let cast = Bundle.main.decode(Cast.self, from: "activeChats.json")
     
@@ -46,9 +46,12 @@ class TitleViewController: UIViewController {
         overview.numberOfLines = 5
         overview.lineBreakMode = NSLineBreakMode.byWordWrapping
         
+        //let universityJoinChatViewModel = UniversityJoinChatViewModel(nameOfModel: universityGroupChatItem)
+        
+       
         
         image.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(title.backdrop_path ?? "")"))
-        
+        castInfo = Cast(title: nil, cast: nil)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -62,6 +65,7 @@ class TitleViewController: UIViewController {
         
         view.backgroundColor = .backgroundColor()
         
+    
      //   setupConstraints()
         setupCollectionView()
         createDataSource()
@@ -78,7 +82,10 @@ class TitleViewController: UIViewController {
             switch result {
 
             case .success(let result):
-                self?.castInfo=result.cast
+            //  БЫЛО  self?.castInfo=result.cast
+                self?.castInfo = Cast(title: self?.titleMovie, cast: result.cast)
+                print(self?.castInfo.title)
+        //        self?.castInfo[0].original_title
              //   print("COUNT\(result.cast.count)")
              //   print(result)
                 self?.reloadData()
@@ -96,7 +103,6 @@ class TitleViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         //collectionView.backgroundColor = .blue
         view.addSubview(collectionView)
-        collectionView.isPagingEnabled
         
         collectionView.register(CastCells.self, forCellWithReuseIdentifier: CastCells.reusedId)
         
@@ -108,7 +114,7 @@ class TitleViewController: UIViewController {
         snapshot.appendSections([.casts])
         
        // print(cast)
-        snapshot.appendItems(castInfo, toSection: .casts)
+        snapshot.appendItems(castInfo.cast ?? casts, toSection: .casts)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
     }

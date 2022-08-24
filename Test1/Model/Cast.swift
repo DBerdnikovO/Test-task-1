@@ -10,7 +10,16 @@ import Foundation
 struct Cast: Hashable, Codable {
 
     
-    var cast: [CastResult]
+    var cast: [CastResult]?
+    var title: Title?
+    
+    
+    public init(title model: Title?,cast: [CastResult]?) {
+        
+        self.cast = cast
+      //  self.profile_path = cast?.profile_path
+        self.title = model
+    }
     
 }
 
@@ -18,11 +27,12 @@ struct CastResult: Hashable, Codable {
     
     
     let id: Int
-    let name: String?
-    let profile_path: String?
-    let character: String?
+
     var overview: String?
-    let backdrop_path: String?
+    let title: String?
+    let original_title: String?
+    let profile_path: String?
+    var castInfo: [CastResult]?
     
     static func == (lhs: CastResult, rhs: CastResult) -> Bool {
         return lhs.id == rhs.id
@@ -30,4 +40,5 @@ struct CastResult: Hashable, Codable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
+    
 }
