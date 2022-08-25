@@ -11,13 +11,25 @@ import UIKit
 class TitleViewController: UIViewController {
     
     private var titleMovie : Title
-    private var casts = [CastResult]()
+    private var castss = [CastResult]()
+ //   private var titless = [CastResult]()
     
+    fileprivate let headerId = "headerId"
+    private var titleInfo : Cast
     private var castInfo : Cast
+    
     
     
     enum Section: Int, CaseIterable {
         case  casts
+        
+        func description() -> String {
+            switch self{
+                
+            case .casts:
+                return "TV Show"
+            }
+        }
     }
     
     var dataSource: UICollectionViewDiffableDataSource<Section, CastResult>?
@@ -47,7 +59,7 @@ class TitleViewController: UIViewController {
 
         image.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(title.backdrop_path ?? "")"))
         castInfo = Cast(title: nil, cast: nil)
-        
+        titleInfo = Cast(title: nil, cast: nil)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -76,6 +88,7 @@ class TitleViewController: UIViewController {
 
             case .success(let result):
                 self?.castInfo = Cast(title: self?.titleMovie, cast: result.cast)
+
                 self?.reloadData()
             case .failure(let error):
                 self?.showAlert(with: "ERROR", and: error.localizedDescription)
@@ -83,15 +96,26 @@ class TitleViewController: UIViewController {
             }
         }
     }
+
     
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
-        
-        
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.backgroundColor = .backgroundColor()
+        
+        
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
+
         view.addSubview(collectionView)
         
+        collectionView?.register(HeaderCollectionReusableView.self,
+                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                 withReuseIdentifier: HeaderCollectionReusableView.id)
+      
         collectionView.register(CastCells.self, forCellWithReuseIdentifier: CastCells.reusedId)
+        
+
+        
         
     }
     
@@ -99,13 +123,18 @@ class TitleViewController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, CastResult>()
         
         snapshot.appendSections([.casts])
-        snapshot.appendItems(castInfo.cast ?? casts, toSection: .casts)
+
+        snapshot.appendItems(castInfo.cast ?? castss , toSection: .casts)
+    //    snapshot.appendItems(titleInfo.cast ?? titless , toSection: .title)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
+        
+        
     }
-    
-    
+
 }
+
+
 
 extension TitleViewController {
     private func createDataSource() {
@@ -116,10 +145,35 @@ extension TitleViewController {
             
             switch section {
             case .casts:
-                print("CASTS")
                 return self.configure(collectionView: collectionView, cellType: CastCells.self, with: cast, for: indexPath)
             }
         })
+        
+        dataSource?.supplementaryViewProvider = {
+            collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Can not create new section header") }
+            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
+            sectionHeader.configurate(text: section.description(), font: .laoSngamMN20(), textColor: UIColor.titleColor())
+            return sectionHeader
+        }
+        
+        dataSource?.supplementaryViewProvider = {
+            collectionView, kind, indexPath in
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                         withReuseIdentifier: HeaderCollectionReusableView.id,
+                                                                         for: indexPath) as! HeaderCollectionReusableView
+            
+            header.configure(poster: self.titleMovie.backdrop_path ?? "ERRO")
+            
+            NSLayoutConstraint.activate([
+                header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                header.heightAnchor.constraint(equalToConstant: 400)
+            ])
+            
+            print(header)
+            return header
+        }
     }
 }
 
@@ -138,21 +192,31 @@ extension TitleViewController {
         }
         return layout
     }
+
     
-    private func createCasts() -> NSCollectionLayoutSection {
+    private func createCasts()-> NSCollectionLayoutSection{
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(150),
-                                               heightDimension: .absolute(250))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(130),
+                                               heightDimension: .absolute(120))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 20, bottom: 0, trailing: 20)
+        let sectionHeader = sectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader]
+        //ТУТ НАСТРОИТЬ!
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 0, bottom: 0, trailing: 0)
         section.orthogonalScrollingBehavior = .continuous
+        
         return section
     }
+    private func sectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        return sectionHeader
+    }
 }
+
