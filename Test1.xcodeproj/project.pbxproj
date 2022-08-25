@@ -20,6 +20,7 @@
 		5B162A1628AF683F00331FF0 /* API Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B162A1528AF683F00331FF0 /* API Caller.swift */; };
 		5B162A1828AF687500331FF0 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B162A1728AF687500331FF0 /* Title.swift */; };
 		5B22B5F428AE1B4A00DFC864 /* String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22B5F328AE1B4A00DFC864 /* String Extension.swift */; };
+		5B247BE628B7AF3400946184 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B247BE528B7AF3400946184 /* UIImageViewExtension.swift */; };
 		5B42AD9F28AD712C0098B51C /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42AD9E28AD712C0098B51C /* Bundle.swift */; };
 		5B42ADA428AD72E00098B51C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADA328AD72E00098B51C /* MainTabBarController.swift */; };
 		5B42ADA628AD73140098B51C /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADA528AD73140098B51C /* ProfileController.swift */; };
@@ -57,6 +58,7 @@
 		5B162A1528AF683F00331FF0 /* API Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Caller.swift"; sourceTree = "<group>"; };
 		5B162A1728AF687500331FF0 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		5B22B5F328AE1B4A00DFC864 /* String Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Extension.swift"; sourceTree = "<group>"; };
+		5B247BE528B7AF3400946184 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		5B42AD9E28AD712C0098B51C /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		5B42ADA328AD72E00098B51C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5B42ADA528AD73140098B51C /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				5B61DA0E28B4191E004EBED0 /* UIStackView.swift */,
 				5BABB3C028B404900044D79A /* Gradient.swift */,
 				5B22B5F328AE1B4A00DFC864 /* String Extension.swift */,
+				5B247BE528B7AF3400946184 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				5B42ADB528AD79A80098B51C /* Extensions.swift in Sources */,
 				5BABB3BF28B4030B0044D79A /* TitleViewController.swift in Sources */,
 				5BEAB2A628B78C1900D8C19C /* Header.swift in Sources */,
+				5B247BE628B7AF3400946184 /* UIImageViewExtension.swift in Sources */,
 				5B1347C528AFC92E0053C898 /* MovieCells.swift in Sources */,
 				5B42AD9F28AD712C0098B51C /* Bundle.swift in Sources */,
 				5B1347BC28AFC27B0053C898 /* SectionHeader.swift in Sources */,

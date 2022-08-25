@@ -8,48 +8,122 @@
 import UIKit
 import Kingfisher
 
-final class HeaderCollectionReusableView: UICollectionReusableView {
+final class HeaderCollectionReusableView: UICollectionReusableView,  SelfConfigCell {
     
-    static var toString: String {
-        return String(describing: self)
-    }
+    static var reusedId: String = "Header"
     
-    let posterIamge = UIImageView()
-    
-    static let id = HeaderCollectionReusableView.toString
-    
-    private let label: UILabel = {
+    let castHeader: UILabel = {
         let label = UILabel()
-        label.text = "header"
-        label.font = .systemFont(ofSize: 50)
-        label.textAlignment = .center
-        label.textColor = .white
+        label.text = "Casts"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .titleColor()
+        label.font = .systemFont(ofSize: 20)
         return label
     }()
     
-    func configure(poster: String) {
-        print(poster)
-        posterIamge.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(poster)"))
-        backgroundColor = .green
-        posterIamge.sizeToFit()
-        posterIamge.clipsToBounds = true
+    let title: UILabel = {
+            let label = UILabel()
+            label.font = .systemFont(ofSize: 40)
+            label.textAlignment = .center
+            label.textColor = .black
+            label.adjustsFontSizeToFitWidth = true
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+    
+    let overview: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .natural
+        label.textColor = .black
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 20
+        return label
+    }()
+    
+    let posterImage = UIImageView()
+    
+    let gradientView = Gradient(from: .top, to: .bottom, startColor: #colorLiteral(red: 0.2955428362, green: 0.2955428362, blue: 0.2955428362, alpha: 1), endColor: .backgroundColor())
+    
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupContraints()
         
-        posterIamge.layer.masksToBounds = true
-        posterIamge.layer.cornerRadius = 10
-        
-        posterIamge.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(posterIamge)
-        
-        NSLayoutConstraint.activate([
-            posterIamge.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            posterIamge.heightAnchor.constraint(equalTo: self.heightAnchor),
-            posterIamge.widthAnchor.constraint(equalTo: self.widthAnchor)
-        ])
+    
+        self.clipsToBounds = true
+//        self.layer.cornerRadius = 10
+//        self.clipsToBounds = true
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        label.frame = bounds
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure<U>(with value: U) where U : Hashable {
+        guard let header: Title = value as? Title else {return}
+
+        title.text = header.title ?? header.original_name ?? "NO OVERVIEW"
+        overview.text = header.overview
+        DispatchQueue.main.async {
+            self.posterImage.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(header.backdrop_path ?? "")"))
+        }
+    }
+    private func setupContraints() {
+        posterImage.sizeToFit()
+        posterImage.clipsToBounds = true
+        
+        title.textColor = .titleColor()
+        
+        overview.textColor = .dateColor()
+        self.setNeedsLayout()
+        
+        posterImage.translatesAutoresizingMaskIntoConstraints = false
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+
+        posterImage.backgroundColor = .red
+        
+        addSubview(posterImage)
+        addSubview(gradientView)
+        addSubview(title)
+        addSubview(overview)
+        addSubview(castHeader)
+        
+        NSLayoutConstraint.activate([
+            posterImage.heightAnchor.constraint(equalToConstant: 300),
+            posterImage.widthAnchor.constraint(equalTo: self.widthAnchor),
+            posterImage.topAnchor.constraint(equalTo: self.topAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            gradientView.topAnchor.constraint(equalTo: posterImage.bottomAnchor, constant: -10),
+            gradientView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            gradientView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            gradientView.heightAnchor.constraint(equalToConstant: 30)
+            
+        ])
+        
+        NSLayoutConstraint.activate([
+            title.topAnchor.constraint(equalTo: gradientView.topAnchor),
+            title.centerXAnchor.constraint(equalTo: gradientView.centerXAnchor),
+            title.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
+            title.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
+        ])
+        
+       
+        NSLayoutConstraint.activate([
+            castHeader.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            castHeader.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10)
+        ])
+        
+        NSLayoutConstraint.activate([
+            overview.topAnchor.constraint(equalTo: title.bottomAnchor),
+            overview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            overview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            overview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40)
+        ])
     }
     
 }

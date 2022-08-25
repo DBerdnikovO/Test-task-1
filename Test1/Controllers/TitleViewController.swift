@@ -27,7 +27,7 @@ class TitleViewController: UIViewController {
             switch self{
                 
             case .casts:
-                return "TV Show"
+                return "Casts"
             }
         }
     }
@@ -110,7 +110,7 @@ class TitleViewController: UIViewController {
         
         collectionView?.register(HeaderCollectionReusableView.self,
                                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                 withReuseIdentifier: HeaderCollectionReusableView.id)
+                                 withReuseIdentifier: HeaderCollectionReusableView.reusedId)
       
         collectionView.register(CastCells.self, forCellWithReuseIdentifier: CastCells.reusedId)
         
@@ -160,15 +160,15 @@ extension TitleViewController {
         dataSource?.supplementaryViewProvider = {
             collectionView, kind, indexPath in
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                         withReuseIdentifier: HeaderCollectionReusableView.id,
+                                                                         withReuseIdentifier: HeaderCollectionReusableView.reusedId,
                                                                          for: indexPath) as! HeaderCollectionReusableView
             
-            header.configure(poster: self.titleMovie.backdrop_path ?? "ERRO")
+            header.configure(with: self.titleMovie )
             
             NSLayoutConstraint.activate([
                 header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
                 header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-                header.heightAnchor.constraint(equalToConstant: 400)
+                header.heightAnchor.constraint(equalToConstant: 550)
             ])
             
             print(header)
@@ -204,7 +204,7 @@ extension TitleViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 20
+        section.interGroupSpacing = 2
         let sectionHeader = sectionHeader()
         section.boundarySupplementaryItems = [sectionHeader]
         //ТУТ НАСТРОИТЬ!
@@ -214,6 +214,7 @@ extension TitleViewController {
         return section
     }
     private func sectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        print("SECTION HEADER")
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         return sectionHeader

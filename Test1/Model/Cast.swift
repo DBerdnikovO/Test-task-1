@@ -32,6 +32,8 @@ struct CastResult: Hashable, Codable {
     let original_title: String?
     let profile_path: String?
     var castInfo: [CastResult]?
+    let character: String?
+    let name: String
     
     static func == (lhs: CastResult, rhs: CastResult) -> Bool {
         return lhs.id == rhs.id

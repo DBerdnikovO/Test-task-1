@@ -19,7 +19,7 @@ extension UIColor {
     }
     
     static func dateColor() -> UIColor {
-        return #colorLiteral(red: 0.5723067522, green: 0.5723067522, blue: 0.5723067522, alpha: 1)
+        return #colorLiteral(red: 0.68177706, green: 0.68177706, blue: 0.68177706, alpha: 1)
     }
 
     static func backgroundColor() -> UIColor {
