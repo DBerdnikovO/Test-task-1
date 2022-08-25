@@ -111,6 +111,10 @@ class TitleViewController: UIViewController {
         collectionView?.register(HeaderCollectionReusableView.self,
                                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                  withReuseIdentifier: HeaderCollectionReusableView.reusedId)
+        
+        collectionView?.register(FooterCollectionReusableView.self,
+                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                 withReuseIdentifier: FooterCollectionReusableView.id)
       
         collectionView.register(CastCells.self, forCellWithReuseIdentifier: CastCells.reusedId)
         
@@ -149,30 +153,40 @@ extension TitleViewController {
             }
         })
         
-        dataSource?.supplementaryViewProvider = {
-            collectionView, kind, indexPath in
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Can not create new section header") }
-            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
-            sectionHeader.configurate(text: section.description(), font: .laoSngamMN20(), textColor: UIColor.titleColor())
-            return sectionHeader
-        }
+    
         
         dataSource?.supplementaryViewProvider = {
             collectionView, kind, indexPath in
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                         withReuseIdentifier: HeaderCollectionReusableView.reusedId,
-                                                                         for: indexPath) as! HeaderCollectionReusableView
-            
-            header.configure(with: self.titleMovie )
-            
-            NSLayoutConstraint.activate([
-                header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-                header.heightAnchor.constraint(equalToConstant: 550)
-            ])
-            
-            print(header)
-            return header
+            if kind == UICollectionView.elementKindSectionFooter {
+                print("ITS FOOTER")
+                
+                let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,withReuseIdentifier: FooterCollectionReusableView.id,
+                                                                                                                                for: indexPath) as! FooterCollectionReusableView
+                                                                   footer.configure()
+                NSLayoutConstraint.activate([
+                    footer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                    footer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                    footer.heightAnchor.constraint(equalToConstant: 100)
+                ])
+                
+                                                                   return footer }
+            else {
+                let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                             withReuseIdentifier: HeaderCollectionReusableView.reusedId,
+                                                                             for: indexPath) as! HeaderCollectionReusableView
+                
+                header.configure(with: self.titleMovie )
+                
+                NSLayoutConstraint.activate([
+                    header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                    header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                    header.heightAnchor.constraint(equalToConstant: 550)
+                ])
+                
+                print(header)
+                return header
+            }
+
         }
     }
 }
@@ -206,18 +220,23 @@ extension TitleViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 2
         let sectionHeader = sectionHeader()
-        section.boundarySupplementaryItems = [sectionHeader]
-        //ТУТ НАСТРОИТЬ!
+        let sectionFooter = sectionFooter()
+        section.boundarySupplementaryItems = [sectionHeader, sectionFooter]
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 0, bottom: 0, trailing: 0)
         section.orthogonalScrollingBehavior = .continuous
         
         return section
     }
     private func sectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        print("SECTION HEADER")
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         return sectionHeader
     }
+    private func sectionFooter() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let sectionFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+        let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionFooterSize, elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
+        return sectionFooter
+    }
+    
 }
 

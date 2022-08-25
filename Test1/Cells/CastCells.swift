@@ -12,7 +12,10 @@ class CastCells: UICollectionViewCell, SelfConfigCell {
     
     static var reusedId: String = "CastCells"
     
-    let avatarImage = UIImageView()
+    let avatarImage : UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
     
     let nameActor: UILabel = {
             let label = UILabel()
@@ -54,20 +57,28 @@ class CastCells: UICollectionViewCell, SelfConfigCell {
         roleActor.textColor = .dateColor()
         nameActor.text = cast.name
         
+        
         DispatchQueue.main.async(execute:{
             self.avatarImage.makeRounded()
             self.avatarImage.clipsToBounds = true
         })
         
+        
+        
         DispatchQueue.main.async {
+            
             self.avatarImage.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(cast.profile_path ?? "")"))
+           
         }
         
     }
     private func setupContraints() {
 
+      //  let image = #imageLiteral(resourceName: "unknown")
+        
         avatarImage.translatesAutoresizingMaskIntoConstraints = false
-        avatarImage.backgroundColor = .red
+     //   avatarImage.backgroundColor = UIColor(patternImage: image)
+     //   avatarImage.backgroundColor = .red
         
         
         //avatarImage.setRounded()
@@ -87,7 +98,8 @@ class CastCells: UICollectionViewCell, SelfConfigCell {
             nameActor.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5)
         ]))
         NSLayoutConstraint.activate([
-            roleActor.topAnchor.constraint(equalTo: nameActor.bottomAnchor),
+            roleActor.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+           // roleActor.topAnchor.constraint(equalTo: nameActor.bottomAnchor),
             roleActor.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
             roleActor.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5)
         ])
