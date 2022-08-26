@@ -43,7 +43,7 @@ class VideoController: UIViewController {
         
         viewController.navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+
         setupCollectionView()
         createDataSource()
         reloadData()
@@ -244,5 +244,3 @@ extension VideoController {
         return sectionHeader
     }
 }
-
-

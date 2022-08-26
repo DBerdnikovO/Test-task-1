@@ -8,21 +8,11 @@
 import UIKit
 import Kingfisher
 
-class HeaderCollectionReusableView: UICollectionReusableView,  SelfConfigCell {
+class TitleCell: UICollectionReusableView,  SelfConfigCell {
     
      
     
     static var reusedId: String = "Header"
-    
-//    var backButton: UIButton = {
-//
-//        var button = UIButton()
-//        button.backgroundColor = .systemRed
-//        button.setTitle("Watch Now", for: .normal)
-//        button.layer.cornerRadius = 5
-//        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-//        return button
-//    }()
     
     let castHeader: UILabel = {
         let label = UILabel()
@@ -54,20 +44,8 @@ class HeaderCollectionReusableView: UICollectionReusableView,  SelfConfigCell {
         return label
     }()
     
-//    let backButton: UIButton = {
-//       let button = UIButton()
-//
-//        let image = UIImage(systemName: "chevron.backward")?.withRenderingMode(.alwaysTemplate)
-//        button.setImage(image , for: .normal)
-//        button.tintColor = .red
-//        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-    
     let posterImage = UIImageView()
     let gradientView = Gradient(from: .top, to: .bottom, startColor: #colorLiteral(red: 0.2955428362, green: 0.2955428362, blue: 0.2955428362, alpha: 1), endColor: .backgroundColor())
-  //  let navigationView = Gradient(from: .top, to: .bottom, startColor: #colorLiteral(red: 0.65625, green: 0.65625, blue: 0.65625, alpha: 1), endColor: UIColor(white: 0.1, alpha: 0.1))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -113,20 +91,12 @@ class HeaderCollectionReusableView: UICollectionReusableView,  SelfConfigCell {
         addSubview(title)
         addSubview(overview)
         addSubview(castHeader)
-     //   addSubview(navigationView)
-      //  addSubview(backButton)
         
         NSLayoutConstraint.activate([
             posterImage.heightAnchor.constraint(equalToConstant: 300),
             posterImage.widthAnchor.constraint(equalTo: self.widthAnchor),
             posterImage.topAnchor.constraint(equalTo: self.topAnchor)
         ])
-        
-//        NSLayoutConstraint.activate([
-//            navigationView.topAnchor.constraint(equalTo: self.topAnchor),
-//            navigationView.widthAnchor.constraint(equalTo: self.widthAnchor),
-//            navigationView.heightAnchor.constraint(equalToConstant: 60)
-//        ])
         
         NSLayoutConstraint.activate([
             gradientView.topAnchor.constraint(equalTo: posterImage.bottomAnchor, constant: -10),

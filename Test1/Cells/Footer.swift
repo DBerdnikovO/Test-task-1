@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class FooterCollectionReusableView: UICollectionReusableView {
+final class FooterCell: UICollectionReusableView {
     
     static var toString: String {
         return String(describing: self)
     }
-    static let id = FooterCollectionReusableView.toString
+    static let id = FooterCell.toString
     
     
     @objc func buttonAction(sender: UIButton!) {

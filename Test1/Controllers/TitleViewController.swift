@@ -16,6 +16,7 @@ class TitleViewController: UIViewController {
        let button = UIButton()
         
         let image = UIImage(systemName: "chevron.backward")?.withRenderingMode(.alwaysTemplate)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .black, scale: .large)
         button.setImage(image , for: .normal)
         button.tintColor = .red
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
@@ -93,6 +94,7 @@ class TitleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupCollectionView()
         createDataSource()
         reloadData()
@@ -138,15 +140,15 @@ class TitleViewController: UIViewController {
         view.addSubview(backButton)
         view.addSubview(favoriteButton)
 
-        collectionView?.register(HeaderCollectionReusableView.self,
+        collectionView?.register(TitleCell.self,
                                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                 withReuseIdentifier: HeaderCollectionReusableView.reusedId)
+                                 withReuseIdentifier: TitleCell.reusedId)
         
-        collectionView?.register(FooterCollectionReusableView.self,
+        collectionView?.register(FooterCell.self,
                                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-                                 withReuseIdentifier: FooterCollectionReusableView.id)
+                                 withReuseIdentifier: FooterCell.id)
       
-        collectionView.register(CastCells.self, forCellWithReuseIdentifier: CastCells.reusedId)
+        collectionView.register(CastsCells.self, forCellWithReuseIdentifier: CastsCells.reusedId)
         
         NSLayoutConstraint.activate([
             backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
@@ -191,7 +193,7 @@ extension TitleViewController {
             
             switch section {
             case .casts:
-                return self.configure(collectionView: collectionView, cellType: CastCells.self, with: cast, for: indexPath)
+                return self.configure(collectionView: collectionView, cellType: CastsCells.self, with: cast, for: indexPath)
             }
         })
         
@@ -202,8 +204,8 @@ extension TitleViewController {
             if kind == UICollectionView.elementKindSectionFooter {
                 print("ITS FOOTER")
                 
-                let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,withReuseIdentifier: FooterCollectionReusableView.id,
-                                                                                                                                for: indexPath) as! FooterCollectionReusableView
+                let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,withReuseIdentifier: FooterCell.id,
+                                                                                                                                for: indexPath) as! FooterCell
                                                                    footer.configure()
                 NSLayoutConstraint.activate([
                     footer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -214,8 +216,8 @@ extension TitleViewController {
                                                                    return footer }
             else {
                 let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                             withReuseIdentifier: HeaderCollectionReusableView.reusedId,
-                                                                             for: indexPath) as! HeaderCollectionReusableView
+                                                                             withReuseIdentifier: TitleCell.reusedId,
+                                                                             for: indexPath) as! TitleCell
                 
                 header.configure(with: self.titleMovie )
                 
