@@ -44,6 +44,15 @@ class TitleCell: UICollectionReusableView,  SelfConfigCell {
         return label
     }()
     
+    let details: UILabel = {
+       let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textColor = .dateColor()
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let posterImage = UIImageView()
     let gradientView = Gradient(from: .top, to: .bottom, startColor: #colorLiteral(red: 0.2955428362, green: 0.2955428362, blue: 0.2955428362, alpha: 1), endColor: .backgroundColor())
     
@@ -60,6 +69,7 @@ class TitleCell: UICollectionReusableView,  SelfConfigCell {
     func configure<U>(with value: U) where U : Hashable {
         guard let header: Title = value as? Title else {return}
 
+        details.text = reFormat(from: (header.release_date ?? header.first_air_date) ?? "ERROR")
         title.text = header.title ?? header.original_name ?? "NO OVERVIEW"
         overview.text = header.overview
         DispatchQueue.main.async {
@@ -82,13 +92,13 @@ class TitleCell: UICollectionReusableView,  SelfConfigCell {
         
         posterImage.translatesAutoresizingMaskIntoConstraints = false
         gradientView.translatesAutoresizingMaskIntoConstraints = false
-      //  navigationView.translatesAutoresizingMaskIntoConstraints = false
         
         posterImage.backgroundColor = .red
         
         addSubview(posterImage)
         addSubview(gradientView)
         addSubview(title)
+        addSubview(details)
         addSubview(overview)
         addSubview(castHeader)
         
@@ -113,6 +123,10 @@ class TitleCell: UICollectionReusableView,  SelfConfigCell {
             title.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
         ])
         
+        NSLayoutConstraint.activate([
+            details.topAnchor.constraint(equalTo: gradientView.bottomAnchor, constant: 20),
+            details.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
        
         NSLayoutConstraint.activate([
             castHeader.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -120,11 +134,27 @@ class TitleCell: UICollectionReusableView,  SelfConfigCell {
         ])
         
         NSLayoutConstraint.activate([
-            overview.topAnchor.constraint(equalTo: title.bottomAnchor),
+            overview.topAnchor.constraint(equalTo: details.bottomAnchor, constant: 5),
             overview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             overview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             overview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40)
         ])
     }
     
+    func reFormat(from dateStr: String) -> String? {
+      let fromFormatter = DateFormatter()
+      fromFormatter.dateFormat = "yyyy-MM-dd"
+
+      let toFormatter = DateFormatter()
+        toFormatter.locale = Locale(identifier: "en_US_POSIX")
+      toFormatter.dateFormat = "yyyy"
+
+        
+        
+        
+        
+      guard let date = fromFormatter.date(from: dateStr) else { return nil }
+
+      return toFormatter.string(from: date)
+    }
 }

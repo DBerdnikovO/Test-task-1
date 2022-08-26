@@ -73,15 +73,8 @@ class CastsCells: UICollectionViewCell, SelfConfigCell {
         
     }
     private func setupContraints() {
-
-      //  let image = #imageLiteral(resourceName: "unknown")
         
         avatarImage.translatesAutoresizingMaskIntoConstraints = false
-     //   avatarImage.backgroundColor = UIColor(patternImage: image)
-     //   avatarImage.backgroundColor = .red
-        
-        
-        //avatarImage.setRounded()
         
         addSubview(avatarImage)
         addSubview(nameActor)
