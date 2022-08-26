@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileController: UITabBarController {
+class PlayViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

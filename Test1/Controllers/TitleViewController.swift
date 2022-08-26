@@ -30,7 +30,18 @@ class TitleViewController: UIViewController {
         let image = UIImage(systemName: "bookmark")?.withRenderingMode(.alwaysTemplate)
         button.setImage(image , for: .normal)
         button.tintColor = .red
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(goFavorits), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let azazaButton: UIButton = {
+       let button = UIButton()
+        
+        let image = UIImage(systemName: "bookmark")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(image , for: .normal)
+        button.tintColor = .red
+        button.addTarget(self, action: #selector(goArray), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -40,7 +51,7 @@ class TitleViewController: UIViewController {
  //   private var titless = [CastResult]()
     
     fileprivate let headerId = "headerId"
-    private var titleInfo : Cast
+
     private var castInfo : Cast
     
     
@@ -84,7 +95,6 @@ class TitleViewController: UIViewController {
 
         image.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(title.backdrop_path ?? "")"))
         castInfo = Cast(title: nil, cast: nil)
-        titleInfo = Cast(title: nil, cast: nil)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -105,6 +115,17 @@ class TitleViewController: UIViewController {
     
     @objc func buttonAction(sender: UIButton!) {
         self.dismiss(animated: true)
+    }
+    
+    @objc func goArray(sender: UIButton!) {
+        let favoriteInfo = FavoriteViewController.shared.getCast(newCast: castInfo)
+      //  navigationController?.pushViewController(favoriteInfo, animated: true)
+    }
+    
+    @objc func goFavorits(sender: UIButton!) {
+//       // let favoriteInfo = FavoriteViewController(castCell: castInfo)
+//        navigationController?.pushViewController(favoriteInfo, animated: true)
+//        present(favoriteInfo, animated: true)
     }
     
     private func getCast() {
@@ -139,6 +160,7 @@ class TitleViewController: UIViewController {
         view.addSubview(gradientView)
         view.addSubview(backButton)
         view.addSubview(favoriteButton)
+        view.addSubview(azazaButton)
 
         collectionView?.register(TitleCell.self,
                                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -165,6 +187,11 @@ class TitleViewController: UIViewController {
                     gradientView.widthAnchor.constraint(equalTo: view.widthAnchor),
                     gradientView.heightAnchor.constraint(equalToConstant: 100)
                 ])
+        
+        NSLayoutConstraint.activate([
+            azazaButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            azazaButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -20)
+        ])
         
     }
     

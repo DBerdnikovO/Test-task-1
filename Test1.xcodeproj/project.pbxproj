@@ -23,7 +23,7 @@
 		5B247BE628B7AF3400946184 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B247BE528B7AF3400946184 /* UIImageViewExtension.swift */; };
 		5B42AD9F28AD712C0098B51C /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42AD9E28AD712C0098B51C /* Bundle.swift */; };
 		5B42ADA428AD72E00098B51C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADA328AD72E00098B51C /* MainTabBarController.swift */; };
-		5B42ADA628AD73140098B51C /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADA528AD73140098B51C /* ProfileController.swift */; };
+		5B42ADA628AD73140098B51C /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADA528AD73140098B51C /* PlayViewController.swift */; };
 		5B42ADA928AD791A0098B51C /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5B42ADA828AD791A0098B51C /* RxGesture */; };
 		5B42ADAD28AD79410098B51C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B42ADAC28AD79410098B51C /* SnapKit */; };
 		5B42ADB428AD79A80098B51C /* CustomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADAF28AD79A80098B51C /* CustomTabItem.swift */; };
@@ -37,6 +37,7 @@
 		5B8302F528AD50AB005DF459 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8302F428AD50AB005DF459 /* VideoController.swift */; };
 		5B8302FA28AD50AB005DF459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B8302F928AD50AB005DF459 /* Assets.xcassets */; };
 		5B8302FD28AD50AB005DF459 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B8302FB28AD50AB005DF459 /* LaunchScreen.storyboard */; };
+		5B9AE57628B9608C000D08B7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9AE57528B9608C000D08B7 /* FavoriteViewController.swift */; };
 		5BABB3BF28B4030B0044D79A /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BABB3BE28B4030B0044D79A /* TitleViewController.swift */; };
 		5BABB3C128B404900044D79A /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BABB3C028B404900044D79A /* Gradient.swift */; };
 		5BABB3C328B412520044D79A /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BABB3C228B412520044D79A /* Cast.swift */; };
@@ -63,7 +64,7 @@
 		5B247BE528B7AF3400946184 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		5B42AD9E28AD712C0098B51C /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		5B42ADA328AD72E00098B51C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		5B42ADA528AD73140098B51C /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		5B42ADA528AD73140098B51C /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		5B42ADAF28AD79A80098B51C /* CustomTabItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabItem.swift; sourceTree = "<group>"; };
 		5B42ADB028AD79A80098B51C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5B42ADB128AD79A80098B51C /* CustomItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomItemView.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		5B8302F928AD50AB005DF459 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B8302FC28AD50AB005DF459 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B8302FE28AD50AB005DF459 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B9AE57528B9608C000D08B7 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		5BABB3BE28B4030B0044D79A /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		5BABB3C028B404900044D79A /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		5BABB3C228B412520044D79A /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
@@ -155,7 +157,8 @@
 				5B8302F428AD50AB005DF459 /* VideoController.swift */,
 				5BABB3BE28B4030B0044D79A /* TitleViewController.swift */,
 				5B42ADA328AD72E00098B51C /* MainTabBarController.swift */,
-				5B42ADA528AD73140098B51C /* ProfileController.swift */,
+				5B42ADA528AD73140098B51C /* PlayViewController.swift */,
+				5B9AE57528B9608C000D08B7 /* FavoriteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -298,7 +301,7 @@
 				5B0DDFB628B27201009BE692 /* UILabel.swift in Sources */,
 				5B8302F528AD50AB005DF459 /* VideoController.swift in Sources */,
 				5BABB3C328B412520044D79A /* Cast.swift in Sources */,
-				5B42ADA628AD73140098B51C /* ProfileController.swift in Sources */,
+				5B42ADA628AD73140098B51C /* PlayViewController.swift in Sources */,
 				5BDAF4E428AE2A8A00B2716F /* Font.swift in Sources */,
 				5B1347C028AFC8120053C898 /* UIViewController.swift in Sources */,
 				5B162A1628AF683F00331FF0 /* API Caller.swift in Sources */,
@@ -317,6 +320,7 @@
 				5BEAB2A628B78C1900D8C19C /* TitleCell.swift in Sources */,
 				5B247BE628B7AF3400946184 /* UIImageViewExtension.swift in Sources */,
 				5B1347C528AFC92E0053C898 /* MovieCells.swift in Sources */,
+				5B9AE57628B9608C000D08B7 /* FavoriteViewController.swift in Sources */,
 				5B42AD9F28AD712C0098B51C /* Bundle.swift in Sources */,
 				5B1347BC28AFC27B0053C898 /* SectionHeader.swift in Sources */,
 				5BDAF4E228AE2A6900B2716F /* Color.swift in Sources */,

@@ -22,7 +22,7 @@ extension CustomTabItem {
         case .profile:
             return  MainTabBarController(item: .favorite)
         case .play:
-            return ProfileController()
+            return PlayViewController()
         case .favorite:
             return MainTabBarController(item: .profile)
         }

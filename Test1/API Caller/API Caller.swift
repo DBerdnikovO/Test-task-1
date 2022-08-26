@@ -21,13 +21,10 @@ enum APIError: Error {
 
 class APICaller {
     
-    var moviesDict: [Int: [Title]] = [:]
     
     static let shared = APICaller()
     
     func getTrendingMovies(completion: @escaping (Result<Video, Error>) -> Void) {
-        
-        var a = 0
         
         guard let url = URL(string: "\(Constants.baseURL)/3/trending/movie/day?api_key=\(Constants.API_KEY)") else {return}
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
@@ -37,15 +34,12 @@ class APICaller {
 
             do {
                 let results = try JSONDecoder().decode(Video.self, from: data)
-                self.moviesDict[a] = results.results
                 completion(.success(results))
                 
             } catch {
                 completion(.failure(APIError.failedTogetData))
             }
         }
-        a += 1
-        print("AAAA\(moviesDict.count)")
         task.resume()
     }
     
