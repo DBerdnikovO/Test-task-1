@@ -10,6 +10,30 @@ import UIKit
 
 class TitleViewController: UIViewController {
     
+    var viewcontroller = UIViewController()
+    
+    let backButton: UIButton = {
+       let button = UIButton()
+        
+        let image = UIImage(systemName: "chevron.backward")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(image , for: .normal)
+        button.tintColor = .red
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let favoriteButton: UIButton = {
+       let button = UIButton()
+        
+        let image = UIImage(systemName: "bookmark")?.withRenderingMode(.alwaysTemplate)
+        button.setImage(image , for: .normal)
+        button.tintColor = .red
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private var titleMovie : Title
     private var castss = [CastResult]()
  //   private var titless = [CastResult]()
@@ -38,7 +62,7 @@ class TitleViewController: UIViewController {
     let image = UIImageView()
     let overview = UILabel(text: "")
     let titleName = UILabel(text: "")
-    let gradientView = Gradient(from: .top, to: .bottom, startColor: #colorLiteral(red: 0.3159078062, green: 0.3159078062, blue: 0.3159078062, alpha: 1), endColor: .backgroundColor())
+    let gradientView = Gradient(from: .top, to: .bottom, startColor: #colorLiteral(red: 0.3159078062, green: 0.3159078062, blue: 0.3159078062, alpha: 1), endColor: UIColor(white: 0.1, alpha: 0.1))
     
     init(title: Title){
         titleMovie = title
@@ -69,15 +93,16 @@ class TitleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .backgroundColor()
-
         setupCollectionView()
         createDataSource()
         reloadData()
         DispatchQueue.main.async {
             self.getCast()
         }
+    }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        self.dismiss(animated: true)
     }
     
     private func getCast() {
@@ -103,11 +128,16 @@ class TitleViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .backgroundColor()
         
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
 
         view.addSubview(collectionView)
-        
+        view.addSubview(gradientView)
+        view.addSubview(backButton)
+        view.addSubview(favoriteButton)
+
         collectionView?.register(HeaderCollectionReusableView.self,
                                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                  withReuseIdentifier: HeaderCollectionReusableView.reusedId)
@@ -118,8 +148,21 @@ class TitleViewController: UIViewController {
       
         collectionView.register(CastCells.self, forCellWithReuseIdentifier: CastCells.reusedId)
         
-
+        NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+        ])
         
+        NSLayoutConstraint.activate([
+            favoriteButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            favoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+                    gradientView.topAnchor.constraint(equalTo: view.topAnchor),
+                    gradientView.widthAnchor.constraint(equalTo: view.widthAnchor),
+                    gradientView.heightAnchor.constraint(equalToConstant: 100)
+                ])
         
     }
     
@@ -129,8 +172,7 @@ class TitleViewController: UIViewController {
         snapshot.appendSections([.casts])
 
         snapshot.appendItems(castInfo.cast ?? castss , toSection: .casts)
-    //    snapshot.appendItems(titleInfo.cast ?? titless , toSection: .title)
-
+        
         dataSource?.apply(snapshot, animatingDifferences: true)
         
         

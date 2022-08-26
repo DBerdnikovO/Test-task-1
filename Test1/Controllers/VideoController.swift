@@ -43,6 +43,7 @@ class VideoController: UIViewController {
         
         viewController.navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        
         setupCollectionView()
         createDataSource()
         reloadData()
@@ -142,9 +143,11 @@ extension VideoController: UICollectionViewDelegate {
         case .popularFilms:
                 //let titleInfo = TitleViewController(title: title)
             let titleInfo = TitleViewController(title: title)
+            titleInfo.modalPresentationStyle = .fullScreen
                present(titleInfo, animated: true)
         case .popularTVseries:
             let titleInfo = TitleViewController(title: title)
+            titleInfo.modalPresentationStyle = .fullScreen
                present(titleInfo, animated: true)
         }
         

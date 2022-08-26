@@ -26,3 +26,11 @@ extension UIColor {
         return #colorLiteral(red: 0.1796403825, green: 0.1629047394, blue: 0.2122661471, alpha: 1)
     }
 }
+
+extension UIImageView {
+  func setImageColor(color: UIColor) {
+    let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+    self.image = templateImage
+    self.tintColor = color
+  }
+}
