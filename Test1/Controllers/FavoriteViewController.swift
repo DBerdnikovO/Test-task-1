@@ -9,24 +9,13 @@ import UIKit
 
 class FavoriteViewController: UIViewController {
     
-    static let shared = FavoriteViewController()
     
-    var cast : [Cast:Int] = [:]
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func addCast(newCast: Cast) {
-        cast[newCast] = 0
-    }
-    
-    func getCast() {
-        print(cast.count)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(getCount())
     }
 
+    func getCount() -> Int {
+        return FavoritsDelegate.shared.getCast().count
+    }
 }

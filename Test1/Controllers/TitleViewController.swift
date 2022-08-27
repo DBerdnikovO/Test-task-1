@@ -113,10 +113,7 @@ class TitleViewController: UIViewController {
     
     
     @objc func goFavorits(sender: UIButton!) {
-        self.dismiss(animated: true) {
-            print("GOFAV")
-            FavoriteViewController.shared.addCast(newCast: self.castInfo)
-        }
+        FavoritsDelegate.shared.addCast(newCast: self.castInfo)
     }
     
     private func getCast() {
