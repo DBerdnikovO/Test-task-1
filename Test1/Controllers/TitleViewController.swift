@@ -10,7 +10,11 @@ import UIKit
 
 class TitleViewController: UIViewController {
     
+    static var controller =  FavoriteViewController()
+    
     var viewcontroller = UIViewController()
+    
+    weak var delegate: FavoritCastProtocol?
     
     let backButton: UIButton = {
        let button = UIButton()
@@ -35,16 +39,6 @@ class TitleViewController: UIViewController {
         return button
     }()
     
-    let azazaButton: UIButton = {
-       let button = UIButton()
-        
-        let image = UIImage(systemName: "bookmark")?.withRenderingMode(.alwaysTemplate)
-        button.setImage(image , for: .normal)
-        button.tintColor = .red
-        button.addTarget(self, action: #selector(goArray), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     
     private var titleMovie : Title
     private var castss = [CastResult]()
@@ -117,15 +111,12 @@ class TitleViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    @objc func goArray(sender: UIButton!) {
-        let favoriteInfo = FavoriteViewController.shared.getCast(newCast: castInfo)
-      //  navigationController?.pushViewController(favoriteInfo, animated: true)
-    }
     
     @objc func goFavorits(sender: UIButton!) {
-//       // let favoriteInfo = FavoriteViewController(castCell: castInfo)
-//        navigationController?.pushViewController(favoriteInfo, animated: true)
-//        present(favoriteInfo, animated: true)
+        self.dismiss(animated: true) {
+            print("GOFAV")
+            FavoriteViewController.shared.addCast(newCast: self.castInfo)
+        }
     }
     
     private func getCast() {
@@ -160,7 +151,6 @@ class TitleViewController: UIViewController {
         view.addSubview(gradientView)
         view.addSubview(backButton)
         view.addSubview(favoriteButton)
-        view.addSubview(azazaButton)
 
         collectionView?.register(TitleCell.self,
                                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -188,10 +178,6 @@ class TitleViewController: UIViewController {
                     gradientView.heightAnchor.constraint(equalToConstant: 100)
                 ])
         
-        NSLayoutConstraint.activate([
-            azazaButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            azazaButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -20)
-        ])
         
     }
     

@@ -20,7 +20,7 @@ extension CustomTabItem {
         case .home:
             return VideoController()
         case .profile:
-            return  MainTabBarController(item: .favorite)
+            return  FavoriteViewController()
         case .play:
             return PlayViewController()
         case .favorite:
