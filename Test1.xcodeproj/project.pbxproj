@@ -97,13 +97,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B1347C328AFC9180053C898 /* Cells */ = {
+		5B1347C328AFC9180053C898 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				5BCC9B0728BBCC39000FD297 /* CustomCells */,
 				5BCC9B0828BBCC49000FD297 /* CustomHeaderAndFooter */,
 			);
-			path = Cells;
+			path = View;
 			sourceTree = "<group>";
 		};
 		5B162A1328AF680700331FF0 /* Extensions */ = {
@@ -199,7 +199,7 @@
 			children = (
 				5B4F494728BAAB3000D548AA /* SupportingFiles */,
 				5B4F494428BAAA9200D548AA /* ProtocolDelegate */,
-				5B1347C328AFC9180053C898 /* Cells */,
+				5B1347C328AFC9180053C898 /* View */,
 				5B162A1928AF688300331FF0 /* Model */,
 				5B162A1428AF683100331FF0 /* API Caller */,
 				5B42ADA228AD72CA0098B51C /* Controllers */,
