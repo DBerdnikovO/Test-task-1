@@ -45,8 +45,6 @@ class FavoriteViewController: UIViewController {
         
         view.addSubview(collectionView)
         
-       
-        
         collectionView.register(FavoritsCells.self, forCellWithReuseIdentifier: FavoritsCells.reusedId)
         collectionView.delegate = self
     }

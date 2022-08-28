@@ -33,7 +33,9 @@ class MovieCells: UICollectionViewCell, SelfConfigCell {
         title.textColor = .titleColor()
         title.adjustsFontSizeToFitWidth = true
         
-        date.text = reFormat(from: movie.release_date ?? "ERROR")
+        guard let release_date = movie.release_date else { return }
+        
+        date.text = reFormat(from: release_date)
         date.textColor = .dateColor()
         
         DispatchQueue.main.async {
@@ -42,7 +44,7 @@ class MovieCells: UICollectionViewCell, SelfConfigCell {
     }
     
     private func setupContraints() {
-        movieImageView.sizeToFit()
+        movieImageView.contentMode = .scaleAspectFill
         movieImageView.clipsToBounds = true
         
         movieImageView.layer.masksToBounds = true

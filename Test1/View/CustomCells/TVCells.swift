@@ -33,7 +33,8 @@ class TVCells: UICollectionViewCell, SelfConfigCell {
         title.text = movie.original_name
         title.textColor = .titleColor()
         
-        date.text = reFormat(from: movie.first_air_date ?? "ERROR")
+        guard let first_air_date = movie.first_air_date else { return }
+        date.text = reFormat(from: first_air_date)
         date.textColor = .dateColor()
         
         movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path ?? "")"))

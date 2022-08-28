@@ -24,6 +24,7 @@ struct Cast: Hashable, Codable {
 
 struct CastResult: Hashable, Codable {
     
+    var like: Bool?
     
     let id: Int
 

@@ -108,6 +108,7 @@ class TitleViewController: UIViewController {
     
     
     @objc func goFavorits(sender: UIButton!) {
+        
         FavoritsDelegate.shared.addCast(newCast: self.castInfo)
     }
     
