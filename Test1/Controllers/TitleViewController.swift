@@ -10,8 +10,6 @@ import UIKit
 
 class TitleViewController: UIViewController {
     
-    static var controller =  FavoriteViewController()
-    
     var viewcontroller = UIViewController()
     
     weak var delegate: FavoritCastProtocol?
@@ -42,7 +40,6 @@ class TitleViewController: UIViewController {
     
     private var titleMovie : Title
     private var castss = [CastResult]()
- //   private var titless = [CastResult]()
     
     fileprivate let headerId = "headerId"
 

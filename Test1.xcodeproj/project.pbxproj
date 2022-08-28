@@ -49,6 +49,7 @@
 		5BDAF4E428AE2A8A00B2716F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAF4E328AE2A8A00B2716F /* Font.swift */; };
 		5BE0C1CD28AFF620008E9AF6 /* TVCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0C1CC28AFF620008E9AF6 /* TVCells.swift */; };
 		5BEAB2A628B78C1900D8C19C /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEAB2A528B78C1900D8C19C /* TitleCell.swift */; };
+		5BF2DBEC28BB97BA001AB119 /* FavoritsCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2DBEB28BB97BA001AB119 /* FavoritsCells.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		5BDAF4E328AE2A8A00B2716F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		5BE0C1CC28AFF620008E9AF6 /* TVCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCells.swift; sourceTree = "<group>"; };
 		5BEAB2A528B78C1900D8C19C /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		5BF2DBEB28BB97BA001AB119 /* FavoritsCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritsCells.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				5BEAB2A528B78C1900D8C19C /* TitleCell.swift */,
 				5BC3B3E928B8016600D4B18C /* Footer.swift */,
 				5B4F494528BAAB1500D548AA /* SectionHeader.swift */,
+				5BF2DBEB28BB97BA001AB119 /* FavoritsCells.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -161,9 +164,9 @@
 			children = (
 				5B8302F428AD50AB005DF459 /* VideoController.swift */,
 				5BABB3BE28B4030B0044D79A /* TitleViewController.swift */,
+				5B4F494128BAA99100D548AA /* FavoriteViewController.swift */,
 				5B42ADA328AD72E00098B51C /* MainTabBarController.swift */,
 				5B42ADA528AD73140098B51C /* PlayViewController.swift */,
-				5B4F494128BAA99100D548AA /* FavoriteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				5BDAF4E428AE2A8A00B2716F /* Font.swift in Sources */,
 				5B1347C028AFC8120053C898 /* UIViewController.swift in Sources */,
 				5B162A1628AF683F00331FF0 /* API Caller.swift in Sources */,
+				5BF2DBEC28BB97BA001AB119 /* FavoritsCells.swift in Sources */,
 				5B4F494628BAAB1500D548AA /* SectionHeader.swift in Sources */,
 				5BE0C1CD28AFF620008E9AF6 /* TVCells.swift in Sources */,
 				5B1347C228AFC8340053C898 /* SelfConfigCellProtocol.swift in Sources */,
