@@ -34,21 +34,4 @@ struct Title: Hashable, Codable {
         return lhs.id == rhs.id
     }
     
-    init(id: Int = 0,title: String? = nil,  media_type: String? = nil, backdrop_path: String? = nil,
-    original_name: String? = nil,original_title: String? = nil,  poster_path: String? = nil, overview: String? = nil,
-         vote_count: Int? = nil, release_date: String? = nil, vote_average: Double? = nil, first_air_date: String? = nil) {
-        
-        self.id = id
-        self.title = title
-        self.media_type = media_type
-        self.backdrop_path = backdrop_path
-        self.original_name = original_name
-        self.original_title = original_title
-        self.poster_path = poster_path
-        self.overview = overview
-        self.vote_count = vote_count
-        self.release_date = release_date
-        self.vote_average = vote_average
-        self.first_air_date = first_air_date
-    }
 }
