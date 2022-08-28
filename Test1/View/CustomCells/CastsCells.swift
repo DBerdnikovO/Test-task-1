@@ -68,7 +68,7 @@ class CastsCells: UICollectionViewCell, SelfConfigCell {
         DispatchQueue.main.async {
             
             self.avatarImage.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(cast.profile_path ?? "")"))
-           
+            self.avatarImage.contentMode = .scaleAspectFill
         }
         
     }

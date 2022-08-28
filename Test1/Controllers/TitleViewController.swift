@@ -136,19 +136,20 @@ class TitleViewController: UIViewController {
         
         gradientView.translatesAutoresizingMaskIntoConstraints = false
 
-        
-        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
 
         view.addSubview(collectionView)
         view.addSubview(gradientView)
         view.addSubview(backButton)
         view.addSubview(favoriteButton)
+        
+        
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
 
-        collectionView?.register(TitleCell.self,
+        collectionView.register(TitleCell.self,
                                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                  withReuseIdentifier: TitleCell.reusedId)
         
-        collectionView?.register(FooterCell.self,
+        collectionView.register(FooterCell.self,
                                  forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                  withReuseIdentifier: FooterCell.id)
       
@@ -209,20 +210,24 @@ extension TitleViewController {
             if kind == UICollectionView.elementKindSectionFooter {
                 print("ITS FOOTER")
                 
-                let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,withReuseIdentifier: FooterCell.id,
-                                                                                                                                for: indexPath) as! FooterCell
-                                                                   footer.configure()
+                let footer = collectionView.dequeueReusableSupplementaryView(
+                    ofKind:UICollectionView.elementKindSectionFooter,
+                    withReuseIdentifier: FooterCell.id,
+                    for: indexPath) as! FooterCell
+                footer.configure()
+                
                 NSLayoutConstraint.activate([
                     footer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
                     footer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
                     footer.heightAnchor.constraint(equalToConstant: 100)
                 ])
                 
-                                                                   return footer }
+        return footer }
             else {
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                             withReuseIdentifier: TitleCell.reusedId,
-                                                                             for: indexPath) as! TitleCell
+                let header = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: UICollectionView.elementKindSectionHeader,
+                    withReuseIdentifier: TitleCell.reusedId,
+                    for: indexPath) as! TitleCell
                 
                 header.configure(with: self.titleMovie )
                 

@@ -74,6 +74,7 @@ class TitleCell: UICollectionReusableView,  SelfConfigCell {
         overview.text = header.overview
         DispatchQueue.main.async {
             self.posterImage.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(header.backdrop_path ?? "")"))
+            self.posterImage.contentMode = .scaleAspectFill
         }
     }
     

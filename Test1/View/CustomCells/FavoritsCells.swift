@@ -5,7 +5,6 @@
 //  Created by Данила Бердников on 28.08.2022.
 //
 
-import Foundation
 import UIKit
 import Kingfisher
 
@@ -43,12 +42,13 @@ class FavoritsCells: UICollectionViewCell, SelfConfigCell {
     
     func configure<U>(with value: U) where U : Hashable {
         guard let favorit: Cast = value as? Cast else {return}
-        
+        self.backgroundColor = .favoritBackgroundColor()
         
         title.text = favorit.title?.original_title ?? favorit.title?.original_name
-        date.text = favorit.title?.first_air_date ?? favorit.title?.release_date
+        date.text = reFormat(from: (favorit.title?.first_air_date ?? favorit.title?.release_date) ?? "ERROR DATA")
         DispatchQueue.main.async {
             self.movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(favorit.title?.poster_path ?? "")"))
+            self.movieImageView.contentMode = .scaleAspectFill
         }
     }
     
@@ -71,20 +71,36 @@ class FavoritsCells: UICollectionViewCell, SelfConfigCell {
         
         NSLayoutConstraint.activate([
             movieImageView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            movieImageView.widthAnchor.constraint(equalToConstant: 150),
+            movieImageView.widthAnchor.constraint(equalToConstant: 96),
             movieImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            title.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            title.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             title.topAnchor.constraint(equalTo: self.topAnchor,constant: 20)
         ])
         
         NSLayoutConstraint.activate([
             date.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
-            date.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            date.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
         ])
     }
     
+    func reFormat(from dateStr: String) -> String? {
+      let fromFormatter = DateFormatter()
+      fromFormatter.dateFormat = "yyyy-MM-dd"
+
+      let toFormatter = DateFormatter()
+        toFormatter.locale = Locale(identifier: "en_US_POSIX")
+      toFormatter.dateFormat = "MMM d, yyyy"
+
+        
+        
+        
+        
+      guard let date = fromFormatter.date(from: dateStr) else { return nil }
+
+      return toFormatter.string(from: date)
+    }
     
 }

@@ -25,5 +25,9 @@ extension UIColor {
     static func backgroundColor() -> UIColor {
         return #colorLiteral(red: 0.1796403825, green: 0.1629047394, blue: 0.2122661471, alpha: 1)
     }
+    
+    static func favoritBackgroundColor() -> UIColor {
+        return #colorLiteral(red: 0.2177920938, green: 0.2177920938, blue: 0.2177920938, alpha: 1)
+    }
 }
 
