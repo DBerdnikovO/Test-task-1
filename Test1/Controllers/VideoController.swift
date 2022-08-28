@@ -134,7 +134,7 @@ extension VideoController: UICollectionViewDelegate {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let title = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        guard let cast = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         
         
         guard let section = Section(rawValue: indexPath.section) else {return }
@@ -142,11 +142,11 @@ extension VideoController: UICollectionViewDelegate {
         switch section {
         case .popularFilms:
                 //let titleInfo = TitleViewController(title: title)
-            let titleInfo = TitleViewController(title: title)
+            let titleInfo = TitleViewController(title: cast)
             titleInfo.modalPresentationStyle = .fullScreen
                present(titleInfo, animated: true)
         case .popularTVseries:
-            let titleInfo = TitleViewController(title: title)
+            let titleInfo = TitleViewController(title: cast)
             titleInfo.modalPresentationStyle = .fullScreen
                present(titleInfo, animated: true)
         }
@@ -177,7 +177,7 @@ extension VideoController {
             collectionView, kind, indexPath in
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Can not create new section header") }
             guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
-            sectionHeader.configurate(text: section.description(), font: .laoSngamMN20(), textColor: UIColor.titleColor())
+            sectionHeader.configurate(text: section.description(), font: .systemFont(ofSize: 20), textColor: UIColor.titleColor())
             return sectionHeader
         }
     }

@@ -44,6 +44,8 @@ class FavoriteViewController: UIViewController {
         collectionView.backgroundColor = .backgroundColor()
         view.addSubview(collectionView)
         
+       
+        
         collectionView.register(FavoritsCells.self, forCellWithReuseIdentifier: FavoritsCells.reusedId)
         collectionView.delegate = self
     }
@@ -109,6 +111,7 @@ extension FavoriteViewController {
             
             switch section {
             case .favorit:
+                
                 return self.movieSection()
             }
         }

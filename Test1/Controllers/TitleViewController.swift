@@ -12,8 +12,6 @@ class TitleViewController: UIViewController {
     
     var viewcontroller = UIViewController()
     
-    weak var delegate: FavoritCastProtocol?
-    
     let backButton: UIButton = {
        let button = UIButton()
         
@@ -63,8 +61,8 @@ class TitleViewController: UIViewController {
     var collectionView: UICollectionView!
     
     let image = UIImageView()
-    let overview = UILabel(text: "")
-    let titleName = UILabel(text: "")
+    let overview = UILabel()
+    let titleName = UILabel()
     let gradientView = Gradient(from: .top, to: .bottom, startColor: #colorLiteral(red: 0.3159078062, green: 0.3159078062, blue: 0.3159078062, alpha: 1), endColor: UIColor(white: 0.1, alpha: 0.1))
     
     init(title: Title){

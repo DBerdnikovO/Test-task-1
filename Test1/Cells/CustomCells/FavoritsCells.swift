@@ -31,6 +31,9 @@ class FavoritsCells: UICollectionViewCell, SelfConfigCell {
         super.init(frame: frame)
         setupContraints()
         
+        
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 10
         self.clipsToBounds = true
     }
     
@@ -67,7 +70,6 @@ class FavoritsCells: UICollectionViewCell, SelfConfigCell {
         addSubview(date)
         
         NSLayoutConstraint.activate([
-            //movieImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             movieImageView.heightAnchor.constraint(equalTo: self.heightAnchor),
             movieImageView.widthAnchor.constraint(equalToConstant: 150),
             movieImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor)

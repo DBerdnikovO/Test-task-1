@@ -1,5 +1,5 @@
 //
-//  TVCells.swift
+//  MovieCells.swift
 //  Test1
 //
 //  Created by Данила Бердников on 19.08.2022.
@@ -9,18 +9,17 @@ import UIKit
 import Kingfisher
 
 
-class TVCells: UICollectionViewCell, SelfConfigCell {
-    static var reusedId: String = "TVCells"
+class MovieCells: UICollectionViewCell, SelfConfigCell {
+    static var reusedId: String = "MovieCell"
     
-    let title = UILabel(text: "title")
-    let date = UILabel(text: "date")
+    let title = UILabel()
+    let date = UILabel()
     let movieImageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupContraints()
         
-        self.layer.cornerRadius = 10
         self.clipsToBounds = true
     }
     
@@ -30,13 +29,16 @@ class TVCells: UICollectionViewCell, SelfConfigCell {
     
     func configure<U>(with value: U) where U : Hashable {
         guard let movie: Title = value as? Title else {return}
-        title.text = movie.original_name
+        title.text = movie.original_title
         title.textColor = .titleColor()
+        title.adjustsFontSizeToFitWidth = true
         
-        date.text = reFormat(from: movie.first_air_date ?? "ERROR")
+        date.text = reFormat(from: movie.release_date ?? "ERROR")
         date.textColor = .dateColor()
         
-        movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path ?? "")"))
+        DispatchQueue.main.async {
+            self.movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path!)"))
+        }
     }
     
     private func setupContraints() {
@@ -58,7 +60,7 @@ class TVCells: UICollectionViewCell, SelfConfigCell {
         
         NSLayoutConstraint.activate([
             movieImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            movieImageView.heightAnchor.constraint(equalToConstant: 220),
+            movieImageView.heightAnchor.constraint(equalToConstant: 200),
             movieImageView.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
 
@@ -71,6 +73,7 @@ class TVCells: UICollectionViewCell, SelfConfigCell {
             date.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
+    
     func reFormat(from dateStr: String) -> String? {
       let fromFormatter = DateFormatter()
       fromFormatter.dateFormat = "yyyy-MM-dd"
@@ -79,9 +82,15 @@ class TVCells: UICollectionViewCell, SelfConfigCell {
         toFormatter.locale = Locale(identifier: "en_US_POSIX")
       toFormatter.dateFormat = "MMM d, yyyy"
 
+        
+        
+        
+        
       guard let date = fromFormatter.date(from: dateStr) else { return nil }
 
       return toFormatter.string(from: date)
     }
+
+    
     
 }
