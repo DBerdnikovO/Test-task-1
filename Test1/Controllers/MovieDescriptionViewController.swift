@@ -94,7 +94,6 @@ class MovieDescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(FavoritsDelegate.shared.getIdFav())
         setupCollectionView()
         createDataSource()
         reloadData()
@@ -227,7 +226,6 @@ extension MovieDescriptionViewController {
         dataSource?.supplementaryViewProvider = {
             collectionView, kind, indexPath in
             if kind == UICollectionView.elementKindSectionFooter {
-                print("ITS FOOTER")
                 
                 let footer = collectionView.dequeueReusableSupplementaryView(
                     ofKind:UICollectionView.elementKindSectionFooter,
@@ -255,8 +253,6 @@ extension MovieDescriptionViewController {
                     header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
                     header.heightAnchor.constraint(equalToConstant: 550)
                 ])
-                
-                print(header)
                 return header
             }
 

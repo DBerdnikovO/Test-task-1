@@ -78,9 +78,7 @@ class TitleCell: UICollectionReusableView,  SelfConfigCell {
         }
     }
     
-    @objc func buttonAction(sender: UIButton!) {
-      print("Button tapped")
-    }
+
     
     private func setupContraints() {
         posterImage.sizeToFit()

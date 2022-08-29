@@ -18,7 +18,6 @@ extension UIViewController {
                 as? T else { fatalError("Unable to dequeu \(cellType)")}
          
          cell.configure(with: value)
-         print("ITS CELL\(cell)")
         return cell
         
     }

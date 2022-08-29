@@ -25,7 +25,6 @@ class FavoriteViewController: UIViewController {
         reloadData()
         view.backgroundColor = .red
         getCount()
-        print(getCast.count)
     }
 
     override func viewWillAppear(_ animated: Bool) {

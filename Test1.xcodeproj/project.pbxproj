@@ -8,19 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5B031F8E28B65C9500648DCB /* CastsCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B031F8D28B65C9500648DCB /* CastsCells.swift */; };
-		5B1347BA28AFC0920053C898 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1347B928AFC0920053C898 /* Kingfisher */; };
 		5B1347C028AFC8120053C898 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347BF28AFC8120053C898 /* UIViewController.swift */; };
 		5B1347C228AFC8340053C898 /* SelfConfigCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347C128AFC8340053C898 /* SelfConfigCellProtocol.swift */; };
 		5B1347C528AFC92E0053C898 /* MovieCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347C428AFC92E0053C898 /* MovieCells.swift */; };
-		5B1347C828AFD06F0053C898 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B1347C728AFD06F0053C898 /* SDWebImage */; };
 		5B162A1628AF683F00331FF0 /* API Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B162A1528AF683F00331FF0 /* API Caller.swift */; };
 		5B162A1828AF687500331FF0 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B162A1728AF687500331FF0 /* Title.swift */; };
 		5B247BE628B7AF3400946184 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B247BE528B7AF3400946184 /* UIImageViewExtension.swift */; };
 		5B42AD9F28AD712C0098B51C /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42AD9E28AD712C0098B51C /* Bundle.swift */; };
 		5B42ADA428AD72E00098B51C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADA328AD72E00098B51C /* MainTabBarController.swift */; };
 		5B42ADA628AD73140098B51C /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADA528AD73140098B51C /* PlayViewController.swift */; };
-		5B42ADA928AD791A0098B51C /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5B42ADA828AD791A0098B51C /* RxGesture */; };
-		5B42ADAD28AD79410098B51C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5B42ADAC28AD79410098B51C /* SnapKit */; };
 		5B42ADB428AD79A80098B51C /* CustomTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADAF28AD79A80098B51C /* CustomTabItem.swift */; };
 		5B42ADB528AD79A80098B51C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADB028AD79A80098B51C /* Extensions.swift */; };
 		5B42ADB628AD79A80098B51C /* CustomItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADB128AD79A80098B51C /* CustomItemView.swift */; };
@@ -45,9 +41,12 @@
 		5BE0C1CD28AFF620008E9AF6 /* TVCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0C1CC28AFF620008E9AF6 /* TVCells.swift */; };
 		5BEAB2A628B78C1900D8C19C /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEAB2A528B78C1900D8C19C /* TitleCell.swift */; };
 		5BF2DBEC28BB97BA001AB119 /* FavoritsCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2DBEB28BB97BA001AB119 /* FavoritsCells.swift */; };
+		866751F625BAC0725C37B775 /* Pods_Test1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BA79C7182CA4C99FCC07C9 /* Pods_Test1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40BA79C7182CA4C99FCC07C9 /* Pods_Test1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55DC8295ABBF9585F43FD0D4 /* Pods-Test1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test1.release.xcconfig"; path = "Target Support Files/Pods-Test1/Pods-Test1.release.xcconfig"; sourceTree = "<group>"; };
 		5B031F8D28B65C9500648DCB /* CastsCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastsCells.swift; sourceTree = "<group>"; };
 		5B1347BF28AFC8120053C898 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		5B1347C128AFC8340053C898 /* SelfConfigCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfigCellProtocol.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		5BE0C1CC28AFF620008E9AF6 /* TVCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCells.swift; sourceTree = "<group>"; };
 		5BEAB2A528B78C1900D8C19C /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		5BF2DBEB28BB97BA001AB119 /* FavoritsCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritsCells.swift; sourceTree = "<group>"; };
+		BB7D5F40DEE1183ADE49AFD0 /* Pods-Test1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test1.debug.xcconfig"; path = "Target Support Files/Pods-Test1/Pods-Test1.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,16 +91,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B1347BA28AFC0920053C898 /* Kingfisher in Frameworks */,
-				5B42ADA928AD791A0098B51C /* RxGesture in Frameworks */,
-				5B1347C828AFD06F0053C898 /* SDWebImage in Frameworks */,
-				5B42ADAD28AD79410098B51C /* SnapKit in Frameworks */,
+				866751F625BAC0725C37B775 /* Pods_Test1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31B47C7017CDF8BDCC255D90 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB7D5F40DEE1183ADE49AFD0 /* Pods-Test1.debug.xcconfig */,
+				55DC8295ABBF9585F43FD0D4 /* Pods-Test1.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		5B1347C328AFC9180053C898 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +194,8 @@
 			children = (
 				5B8302EF28AD50AB005DF459 /* Test1 */,
 				5B8302EE28AD50AB005DF459 /* Products */,
+				31B47C7017CDF8BDCC255D90 /* Pods */,
+				C0E3221BD23C00203E4810B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,6 +247,14 @@
 			path = CustomHeaderAndFooter;
 			sourceTree = "<group>";
 		};
+		C0E3221BD23C00203E4810B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40BA79C7182CA4C99FCC07C9 /* Pods_Test1.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,9 +262,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B83030128AD50AB005DF459 /* Build configuration list for PBXNativeTarget "Test1" */;
 			buildPhases = (
+				3581FD777F934E5B0F20EE14 /* [CP] Check Pods Manifest.lock */,
 				5B8302E928AD50AB005DF459 /* Sources */,
 				5B8302EA28AD50AB005DF459 /* Frameworks */,
 				5B8302EB28AD50AB005DF459 /* Resources */,
+				E87EBB26210719D375A8C874 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,10 +274,6 @@
 			);
 			name = Test1;
 			packageProductDependencies = (
-				5B42ADA828AD791A0098B51C /* RxGesture */,
-				5B42ADAC28AD79410098B51C /* SnapKit */,
-				5B1347B928AFC0920053C898 /* Kingfisher */,
-				5B1347C728AFD06F0053C898 /* SDWebImage */,
 			);
 			productName = Test1;
 			productReference = 5B8302ED28AD50AB005DF459 /* Test1.app */;
@@ -290,11 +304,6 @@
 			);
 			mainGroup = 5B8302E428AD50AB005DF459;
 			packageReferences = (
-				5B42ADA728AD791A0098B51C /* XCRemoteSwiftPackageReference "RxGesture" */,
-				5B42ADAA28AD792D0098B51C /* XCRemoteSwiftPackageReference "RxSwift" */,
-				5B42ADAB28AD79410098B51C /* XCRemoteSwiftPackageReference "SnapKit" */,
-				5B1347B828AFC0920053C898 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				5B1347C628AFD06F0053C898 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 5B8302EE28AD50AB005DF459 /* Products */;
 			projectDirPath = "";
@@ -316,6 +325,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3581FD777F934E5B0F20EE14 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Test1-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E87EBB26210719D375A8C874 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Test1/Pods-Test1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Test1/Pods-Test1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Test1/Pods-Test1-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5B8302E928AD50AB005DF459 /* Sources */ = {
@@ -487,6 +538,7 @@
 		};
 		5B83030228AD50AB005DF459 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB7D5F40DEE1183ADE49AFD0 /* Pods-Test1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -514,6 +566,7 @@
 		};
 		5B83030328AD50AB005DF459 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55DC8295ABBF9585F43FD0D4 /* Pods-Test1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -561,72 +614,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		5B1347B828AFC0920053C898 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
-		5B1347C628AFD06F0053C898 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		5B42ADA728AD791A0098B51C /* XCRemoteSwiftPackageReference "RxGesture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.2;
-			};
-		};
-		5B42ADAA28AD792D0098B51C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-		5B42ADAB28AD79410098B51C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		5B1347B928AFC0920053C898 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B1347B828AFC0920053C898 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		5B1347C728AFD06F0053C898 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B1347C628AFD06F0053C898 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
-		5B42ADA828AD791A0098B51C /* RxGesture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B42ADA728AD791A0098B51C /* XCRemoteSwiftPackageReference "RxGesture" */;
-			productName = RxGesture;
-		};
-		5B42ADAC28AD79410098B51C /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5B42ADAB28AD79410098B51C /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5BD29F1328BCDB390012688D /* Model.xcdatamodeld */ = {
