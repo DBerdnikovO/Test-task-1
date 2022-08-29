@@ -64,7 +64,7 @@ class APICaller {
     
 
     func getCast(id: String, type: String, completion: @escaping (Result<Cast, Error>) -> Void) {
-        guard let url = URL(string: "https://api.themoviedb.org/3/\(type)/\(id)/credits?api_key=697d439ac993538da4e3e60b54e762cd") else {return}
+        guard let url = URL(string: "https://api.themoviedb.org/3/\(type)/\(id)/credits?api_key=9f7d9a831f24d1724a6e9223c68b502c") else {return}
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data, error == nil else {
                 return

@@ -24,18 +24,14 @@ struct Cast: Hashable, Codable {
 
 struct CastResult: Hashable, Codable {
     
-    var like: Bool?
     
     let id: Int
 
     var overview: String?
     let title: String?
-    let original_title: String?
     let profile_path: String?
-    var castInfo: [CastResult]?
     let character: String?
     let name: String
-    let first_air_date: String?
     
     static func == (lhs: CastResult, rhs: CastResult) -> Bool {
         return lhs.id == rhs.id

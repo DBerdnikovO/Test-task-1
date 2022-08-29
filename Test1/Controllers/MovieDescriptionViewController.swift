@@ -70,12 +70,7 @@ class MovieDescriptionViewController: UIViewController {
         titleMovie = title
         titleName.textColor = .titleColor()
         titleName.font = UIFont.systemFont(ofSize: 30)
-        if title.original_title != nil {
-            titleName.text = title.original_title
-        }
-        else {
-            titleName.text = title.original_name
-        }
+        titleName.text = title.title
         overview.text = title.overview
         overview.textColor = .titleColor()
         overview.sizeToFit()

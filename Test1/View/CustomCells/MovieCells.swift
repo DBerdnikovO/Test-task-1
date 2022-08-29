@@ -29,7 +29,7 @@ class MovieCells: UICollectionViewCell, SelfConfigCell {
     
     func configure<U>(with value: U) where U : Hashable {
         guard let movie: Title = value as? Title else {return}
-        title.text = movie.original_title
+        title.text = movie.title
         title.textColor = .titleColor()
         title.adjustsFontSizeToFitWidth = true
         
