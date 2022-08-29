@@ -109,8 +109,7 @@ class MovieDescriptionViewController: UIViewController {
     
     
     @objc func goFavorits(sender: UIButton!) {
-        var isLike : Bool = inFav()
-        print(isLike)
+        let isLike : Bool = inFav()
         if isLike == false {
             FavoritsDelegate.shared.addCast(newCast: self.castInfo)
         }
@@ -121,10 +120,8 @@ class MovieDescriptionViewController: UIViewController {
     
     private func inFav() -> Bool {
         
-        var favArray = FavoritsDelegate.shared.getIdFav()
-        print("IN FAV \(favArray)")
+        let favArray = FavoritsDelegate.shared.getIdFav()
         for like in favArray{
-            print("ITS LIKE\(like) and GET ID\(favArray)")
             if like == self.castInfo.title?.id {
                 return true
             }
