@@ -83,9 +83,9 @@ class FavoritsDelegate {
        
     }
     
-    func loadUserData() {
+    func loadUserData() -> [Cast] {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-          return
+          return []
         }
 
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -99,7 +99,7 @@ class FavoritsDelegate {
         }
 
         for a in request {
-            cae.append(Cast(title: Title(id: (a.value(forKeyPath: "id") as? Int)!,
+            casts[(Cast(title: Title(id: (a.value(forKeyPath: "id") as? Int)!,
                                          title: a.value(forKeyPath: "title") as? String,
                                          media_type: a.value(forKeyPath: "media_type") as? String,
                                          backdrop_path: a.value(forKeyPath: "backdrop_path") as? String,
@@ -108,12 +108,11 @@ class FavoritsDelegate {
                                          overview: a.value(forKeyPath: "overview") as? String,
                                          release_date: a.value(forKeyPath: "release_date") as? String,
                                          vote_average: a.value(forKeyPath: "vote_average") as? Double,
-                                         first_air_date: a.value(forKeyPath: "first_air_date") as? String), cast: nil))
+                                         first_air_date: a.value(forKeyPath: "first_air_date") as? String), cast: nil))] = (a.value(forKeyPath: "id") as? Int)!
   
-          // print( a.value(forKeyPath: "title") as? String)
         }
         
-        print(cae)
+        return Array(casts.keys)
     }
     
     

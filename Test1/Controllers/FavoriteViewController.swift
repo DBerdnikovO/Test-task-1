@@ -24,7 +24,7 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCount()
+//        getCount()
         getUserData()
         setupCollectionView()
         createDataSource()
@@ -38,18 +38,19 @@ class FavoriteViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       getCount()
+//       getCount()
         getUserData()
     }
     
     func getUserData() {
-        FavoritsDelegate.shared.loadUserData()
-    }
-    
-    func getCount() {
-        getCast = FavoritsDelegate.shared.getCast()
+        getCast = FavoritsDelegate.shared.loadUserData()
         self.reloadData()
     }
+    
+//    func getCount() {
+//        getCast = FavoritsDelegate.shared.getCast()
+//        self.reloadData()
+//    }
     
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
