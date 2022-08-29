@@ -13,16 +13,16 @@ struct Video: Hashable, Codable {
 }
 
 struct Title: Hashable, Codable {
-    let id: Int
-    let title: String?
-    let media_type: String?
-    let backdrop_path: String?
-    let original_name: String?
-    let poster_path: String?
-    let overview: String?
-    let release_date: String?
-    let vote_average: Double?
-    let first_air_date: String?
+    var id: Int
+    var title: String?
+    var media_type: String?
+    var backdrop_path: String?
+    var original_name: String?
+    var poster_path: String?
+    var overview: String?
+    var release_date: String?
+    var vote_average: Double?
+    var first_air_date: String?
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

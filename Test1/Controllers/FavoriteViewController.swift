@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoriteViewController: UIViewController {
     
     var getCast: [Cast] = []
+    
+    var request: [NSManagedObject] = []
+
     
     enum Section: Int, CaseIterable {
         case  favorit
@@ -20,17 +24,27 @@ class FavoriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getCount()
+        getUserData()
         setupCollectionView()
         createDataSource()
         reloadData()
+        
+       
+        
         view.backgroundColor = .red
-        getCount()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
        getCount()
+        getUserData()
     }
     
+    func getUserData() {
+        FavoritsDelegate.shared.loadUserData()
+    }
     
     func getCount() {
         getCast = FavoritsDelegate.shared.getCast()

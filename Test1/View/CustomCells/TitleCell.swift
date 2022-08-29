@@ -70,7 +70,7 @@ class TitleCell: UICollectionReusableView,  SelfConfigCell {
         guard let header: Title = value as? Title else {return}
 
         details.text = reFormat(from: (header.release_date ?? header.first_air_date) ?? "ERROR")
-        title.text = header.title
+        title.text = header.title ?? header.original_name
         overview.text = header.overview
         DispatchQueue.main.async {
             self.posterImage.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(header.backdrop_path ?? "")"))

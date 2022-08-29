@@ -27,7 +27,6 @@ struct CastResult: Hashable, Codable {
     
     let id: Int
 
-    var overview: String?
     let title: String?
     let profile_path: String?
     let character: String?
