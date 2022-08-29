@@ -17,3 +17,6 @@
 - Добавление закладок (избранное) пускай работает без всяких запросов и без сохранения в постоянном хранилище – достаточно запоминать выбор пользователя до тех пор, пока приложение не закроется
 
 ![markdown logo](https://swiftapps.ru/wp-content/uploads/2022/02/testovoe-zadanie-junior-ios-developer-prilozhenie-movie.webp)
+
+Переда запуском установите pod: 'pod install'
+
