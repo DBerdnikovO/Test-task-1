@@ -30,7 +30,7 @@ final class FooterCell: UICollectionReusableView {
         button.backgroundColor = .systemRed
          button.setTitle("Watch Now", for: .normal)
         button.layer.cornerRadius = 5
-        button.addTarget(self, action: #selector(backButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         addSubview(button)
     }
     

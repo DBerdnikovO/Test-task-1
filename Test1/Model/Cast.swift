@@ -40,6 +40,7 @@ struct CastResult: Hashable, Codable {
     static func == (lhs: CastResult, rhs: CastResult) -> Bool {
         return lhs.id == rhs.id
     }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

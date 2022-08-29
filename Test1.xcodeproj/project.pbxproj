@@ -40,6 +40,7 @@
 		5BABB3C328B412520044D79A /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BABB3C228B412520044D79A /* Cast.swift */; };
 		5BC3B3EA28B8016600D4B18C /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3B3E928B8016600D4B18C /* Footer.swift */; };
 		5BD29F0D28BC07770012688D /* DataReformatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD29F0C28BC07770012688D /* DataReformatter.swift */; };
+		5BD29F1528BCDB390012688D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BD29F1328BCDB390012688D /* Model.xcdatamodeld */; };
 		5BDAF4E228AE2A6900B2716F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAF4E128AE2A6900B2716F /* Color.swift */; };
 		5BE0C1CD28AFF620008E9AF6 /* TVCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0C1CC28AFF620008E9AF6 /* TVCells.swift */; };
 		5BEAB2A628B78C1900D8C19C /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEAB2A528B78C1900D8C19C /* TitleCell.swift */; };
@@ -78,6 +79,7 @@
 		5BABB3C228B412520044D79A /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 		5BC3B3E928B8016600D4B18C /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
 		5BD29F0C28BC07770012688D /* DataReformatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReformatter.swift; sourceTree = "<group>"; };
+		5BD29F1428BCDB390012688D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		5BDAF4E128AE2A6900B2716F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5BE0C1CC28AFF620008E9AF6 /* TVCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCells.swift; sourceTree = "<group>"; };
 		5BEAB2A528B78C1900D8C19C /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				5B42ADAE28AD79960098B51C /* CustomTapBar */,
 				5B8302F928AD50AB005DF459 /* Assets.xcassets */,
 				5B8302FB28AD50AB005DF459 /* LaunchScreen.storyboard */,
+				5BD29F1328BCDB390012688D /* Model.xcdatamodeld */,
 				5B8302FE28AD50AB005DF459 /* Info.plist */,
 			);
 			path = Test1;
@@ -346,6 +349,7 @@
 				5BDAF4E228AE2A6900B2716F /* Color.swift in Sources */,
 				5BC3B3EA28B8016600D4B18C /* Footer.swift in Sources */,
 				5B42ADA428AD72E00098B51C /* MainTabBarController.swift in Sources */,
+				5BD29F1528BCDB390012688D /* Model.xcdatamodeld in Sources */,
 				5B031F8E28B65C9500648DCB /* CastsCells.swift in Sources */,
 				5B8302F128AD50AB005DF459 /* AppDelegate.swift in Sources */,
 				5B8302F328AD50AB005DF459 /* SceneDelegate.swift in Sources */,
@@ -623,6 +627,19 @@
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		5BD29F1328BCDB390012688D /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5BD29F1428BCDB390012688D /* Model.xcdatamodel */,
+			);
+			currentVersion = 5BD29F1428BCDB390012688D /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5B8302E528AD50AB005DF459 /* Project object */;
 }

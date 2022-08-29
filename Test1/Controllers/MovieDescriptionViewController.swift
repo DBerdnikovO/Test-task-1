@@ -20,7 +20,7 @@ class MovieDescriptionViewController: UIViewController {
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .black, scale: .large)
         button.setImage(image , for: .normal)
         button.tintColor = .red
-        button.addTarget(self, action: #selector(backButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -103,7 +103,7 @@ class MovieDescriptionViewController: UIViewController {
         }
     }
     
-    @objc func backButton(sender: UIButton!) {
+    @objc func buttonAction(sender: UIButton!) {
         self.dismiss(animated: true)
     }
     
