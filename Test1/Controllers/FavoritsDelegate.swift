@@ -11,7 +11,7 @@ class FavoritsDelegate {
     
     static let shared = FavoritsDelegate()
     
-    lazy var cast : [Cast:Int] = [:]
+    var cast : [Cast:Int] = [:]
 
     init() {
     }
@@ -21,11 +21,23 @@ class FavoritsDelegate {
     }
     
     func addCast(newCast: Cast) {
-        cast[newCast] = 0
+        cast[newCast] = newCast.title?.id
+    }
+    
+    func getIdFav() -> [Int] {
+        return Array(cast.values)
     }
     
     func getCast() -> [Cast] {
         return Array(cast.keys)
+    }
+    
+    func deleteFav(deletecast: Cast) {
+        for key in cast.keys{
+            if key == deletecast {
+                cast.removeValue(forKey: key)
+            }
+        }
     }
     
 }

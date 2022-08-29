@@ -8,9 +8,10 @@
 import Kingfisher
 import UIKit
 
-class TitleViewController: UIViewController {
+class MovieDescriptionViewController: UIViewController {
     
     var viewcontroller = UIViewController()
+    
     
     let backButton: UIButton = {
        let button = UIButton()
@@ -93,7 +94,7 @@ class TitleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(FavoritsDelegate.shared.getIdFav())
         setupCollectionView()
         createDataSource()
         reloadData()
@@ -108,8 +109,28 @@ class TitleViewController: UIViewController {
     
     
     @objc func goFavorits(sender: UIButton!) {
+        var isLike : Bool = inFav()
+        print(isLike)
+        if isLike == false {
+            FavoritsDelegate.shared.addCast(newCast: self.castInfo)
+        }
+        else {
+            FavoritsDelegate.shared.deleteFav(deletecast: self.castInfo)
+        }
+    }
+    
+    private func inFav() -> Bool {
         
-        FavoritsDelegate.shared.addCast(newCast: self.castInfo)
+        var favArray = FavoritsDelegate.shared.getIdFav()
+        print("IN FAV \(favArray)")
+        for like in favArray{
+            print("ITS LIKE\(like) and GET ID\(favArray)")
+            if like == self.castInfo.title?.id {
+                return true
+            }
+        }
+        
+        return false
     }
     
     private func getCast() {
@@ -191,7 +212,7 @@ class TitleViewController: UIViewController {
 
 
 
-extension TitleViewController {
+extension MovieDescriptionViewController {
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, CastResult>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, cast) -> UICollectionViewCell? in
             guard let section = Section(rawValue: indexPath.section) else {
@@ -246,7 +267,7 @@ extension TitleViewController {
     }
 }
 
-extension TitleViewController {
+extension MovieDescriptionViewController {
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (senctionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             

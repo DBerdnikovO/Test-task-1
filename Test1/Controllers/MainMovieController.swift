@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 
-class VideoController: UIViewController {
+class MainMovieController: UIViewController {
     
     
     
@@ -129,7 +129,7 @@ class VideoController: UIViewController {
     }
 }
 
-extension VideoController: UICollectionViewDelegate {
+extension MainMovieController: UICollectionViewDelegate {
     
     
     
@@ -142,11 +142,11 @@ extension VideoController: UICollectionViewDelegate {
         switch section {
         case .popularFilms:
                 //let titleInfo = TitleViewController(title: title)
-            let titleInfo = TitleViewController(title: cast)
+            let titleInfo = MovieDescriptionViewController(title: cast)
             titleInfo.modalPresentationStyle = .fullScreen
                present(titleInfo, animated: true)
         case .popularTVseries:
-            let titleInfo = TitleViewController(title: cast)
+            let titleInfo = MovieDescriptionViewController(title: cast)
             titleInfo.modalPresentationStyle = .fullScreen
                present(titleInfo, animated: true)
         }
@@ -155,7 +155,7 @@ extension VideoController: UICollectionViewDelegate {
 }
 
 
-extension VideoController {
+extension MainMovieController {
     
 
     
@@ -183,7 +183,7 @@ extension VideoController {
     }
 }
 
-extension VideoController {
+extension MainMovieController {
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (senctionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             

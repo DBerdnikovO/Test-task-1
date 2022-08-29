@@ -18,7 +18,7 @@ extension CustomTabItem {
     var viewController: UIViewController {
         switch self {
         case .home:
-            return VideoController()
+            return MainMovieController()
         case .profile:
             return  FavoriteViewController()
         case .play:

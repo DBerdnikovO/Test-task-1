@@ -73,7 +73,7 @@ extension FavoriteViewController: UICollectionViewDelegate {
         
         switch section {
         case .favorit:
-            let titleInfo = TitleViewController(title: title.title!)
+            let titleInfo = MovieDescriptionViewController(title: title.title!)
             titleInfo.modalPresentationStyle = .fullScreen
                present(titleInfo, animated: true)
         }
