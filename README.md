@@ -21,3 +21,5 @@
 Переда запуском установите pod: 'pod install'
 
 ![markdown logo](https://raw.githubusercontent.com/DBerdnikovO/Test-task-1/main/Снимок%20экрана%202022-08-29%20в%2016.51.35.png?token=GHSAT0AAAAAABXZ7SYTCMGFSNHFDNLUBJQCYYMW4GA)
+
+![markdown logo](https://raw.githubusercontent.com/DBerdnikovO/Test-task-1/main/Снимок%20экрана%202022-08-29%20в%2016.52.12.png?token=GHSAT0AAAAAABXZ7SYTYC5OSIUAF7UUPE4UYYMW5GA)
