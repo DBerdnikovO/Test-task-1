@@ -30,7 +30,10 @@ class TVCells: UICollectionViewCell, SelfConfigCell {
     
     func configure<U>(with value: U) where U : Hashable {
         guard let movie: Title = value as? Title else {return}
-        title.text = movie.original_name
+        
+        guard let movie_name = movie.original_name else { return }
+        
+        title.text = movie_name
         title.textColor = .titleColor()
         
         guard let first_air_date = movie.first_air_date else { return }
