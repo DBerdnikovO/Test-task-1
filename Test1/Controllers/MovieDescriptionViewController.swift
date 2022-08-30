@@ -106,7 +106,6 @@ class MovieDescriptionViewController: UIViewController {
             FavoritsDelegate.shared.addCast(new: self.castInfo)
         }
         else {
-            print("TRY DELETE")
             FavoritsDelegate.shared.deleteFav(deletecast: self.castInfo)
         }
     }

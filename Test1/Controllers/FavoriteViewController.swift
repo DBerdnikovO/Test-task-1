@@ -37,7 +37,6 @@ class FavoriteViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("I APPEAR")
         getUserData()
         reloadData()
     }
