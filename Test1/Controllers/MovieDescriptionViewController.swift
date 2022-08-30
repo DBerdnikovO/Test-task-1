@@ -92,10 +92,7 @@ class MovieDescriptionViewController: UIViewController {
         setupCollectionView()
         createDataSource()
         reloadData()
-        DispatchQueue.main.async {
-            self.getCast()
-        }
-        
+        getCast()
     }
     
     @objc func buttonAction(sender: UIButton!) {
@@ -128,7 +125,6 @@ class MovieDescriptionViewController: UIViewController {
     
     private func getCast() {
         APICaller.shared.getCast(id: String(titleMovie.id), type: titleMovie.media_type ?? "ad") { [weak self] result in
-           DispatchQueue.main.async {
 
             switch result {
 
@@ -139,7 +135,7 @@ class MovieDescriptionViewController: UIViewController {
             case .failure(let error):
                 self?.showAlert(with: "ERROR", and: error.localizedDescription)
             }
-            }
+            
         }
     }
 

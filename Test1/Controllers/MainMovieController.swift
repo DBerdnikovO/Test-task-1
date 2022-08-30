@@ -48,11 +48,8 @@ class MainMovieController: UIViewController {
         createDataSource()
         reloadData()
 
-        DispatchQueue.main.async {
-            self.getTrandingMovies()
-            self.getTrandingTVs()
-        }
-        
+        getTrandingMovies()
+        getTrandingTVs()        
         
     }
     

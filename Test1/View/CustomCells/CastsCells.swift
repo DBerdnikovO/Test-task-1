@@ -13,7 +13,7 @@ class CastsCells: UICollectionViewCell, SelfConfigCell {
     static var reusedId: String = "CastCells"
     
     let avatarImage : UIImageView = {
-        let imageView = UIImageView()
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
         return imageView
     }()
     
@@ -52,24 +52,12 @@ class CastsCells: UICollectionViewCell, SelfConfigCell {
     func configure<U>(with value: U) where U : Hashable {
         guard let cast: CastResult = value as? CastResult else {return}
 
-      //  avatarImage.setRounded()
         roleActor.text = cast.character
         roleActor.textColor = .dateColor()
         nameActor.text = cast.name
-        
-        
-        DispatchQueue.main.async(execute:{
-            self.avatarImage.makeRounded()
-            self.avatarImage.clipsToBounds = true
-        })
-        
-        
-        
-        DispatchQueue.main.async {
-            
-            self.avatarImage.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(cast.profile_path ?? "")"))
-            self.avatarImage.contentMode = .scaleAspectFill
-        }
+
+        avatarImage.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(cast.profile_path ?? "")"))
+        avatarImage.contentMode = .scaleAspectFill
         
     }
     private func setupContraints() {

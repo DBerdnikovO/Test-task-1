@@ -13,7 +13,6 @@
 		5B1347C528AFC92E0053C898 /* MovieCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1347C428AFC92E0053C898 /* MovieCells.swift */; };
 		5B162A1628AF683F00331FF0 /* API Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B162A1528AF683F00331FF0 /* API Caller.swift */; };
 		5B162A1828AF687500331FF0 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B162A1728AF687500331FF0 /* Title.swift */; };
-		5B247BE628B7AF3400946184 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B247BE528B7AF3400946184 /* UIImageViewExtension.swift */; };
 		5B42AD9F28AD712C0098B51C /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42AD9E28AD712C0098B51C /* Bundle.swift */; };
 		5B42ADA428AD72E00098B51C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADA328AD72E00098B51C /* MainTabBarController.swift */; };
 		5B42ADA628AD73140098B51C /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADA528AD73140098B51C /* PlayViewController.swift */; };
@@ -24,7 +23,7 @@
 		5B42ADB828AD79A80098B51C /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42ADB328AD79A80098B51C /* CustomTabBar.swift */; };
 		5B4F494228BAA99100D548AA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F494128BAA99100D548AA /* FavoriteViewController.swift */; };
 		5B4F494628BAAB1500D548AA /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F494528BAAB1500D548AA /* SectionHeader.swift */; };
-		5B4F494928BAAB7200D548AA /* FavoritsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F494828BAAB7200D548AA /* FavoritsDelegate.swift */; };
+		5B4F494928BAAB7200D548AA /* FavoritsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F494828BAAB7200D548AA /* FavoritsData.swift */; };
 		5B61DA0F28B4191E004EBED0 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61DA0E28B4191E004EBED0 /* UIStackView.swift */; };
 		5B8302F128AD50AB005DF459 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8302F028AD50AB005DF459 /* AppDelegate.swift */; };
 		5B8302F328AD50AB005DF459 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8302F228AD50AB005DF459 /* SceneDelegate.swift */; };
@@ -53,7 +52,6 @@
 		5B1347C428AFC92E0053C898 /* MovieCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCells.swift; sourceTree = "<group>"; };
 		5B162A1528AF683F00331FF0 /* API Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Caller.swift"; sourceTree = "<group>"; };
 		5B162A1728AF687500331FF0 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
-		5B247BE528B7AF3400946184 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		5B42AD9E28AD712C0098B51C /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		5B42ADA328AD72E00098B51C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		5B42ADA528AD73140098B51C /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +62,7 @@
 		5B42ADB328AD79A80098B51C /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		5B4F494128BAA99100D548AA /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		5B4F494528BAAB1500D548AA /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
-		5B4F494828BAAB7200D548AA /* FavoritsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritsDelegate.swift; sourceTree = "<group>"; };
+		5B4F494828BAAB7200D548AA /* FavoritsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritsData.swift; sourceTree = "<group>"; };
 		5B61DA0E28B4191E004EBED0 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		5B8302ED28AD50AB005DF459 /* Test1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8302F028AD50AB005DF459 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				5BDAF4E128AE2A6900B2716F /* Color.swift */,
 				5B61DA0E28B4191E004EBED0 /* UIStackView.swift */,
 				5BABB3C028B404900044D79A /* Gradient.swift */,
-				5B247BE528B7AF3400946184 /* UIImageViewExtension.swift */,
 				5BD29F0C28BC07770012688D /* DataReformatter.swift */,
 			);
 			path = Extensions;
@@ -145,6 +142,14 @@
 				5BABB3C228B412520044D79A /* Cast.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5B309F2228BE308600047D02 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5B4F494828BAAB7200D548AA /* FavoritsData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		5B42ADA228AD72CA0098B51C /* Controllers */ = {
@@ -175,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				5B1347C128AFC8340053C898 /* SelfConfigCellProtocol.swift */,
-				5B4F494828BAAB7200D548AA /* FavoritsDelegate.swift */,
 			);
 			path = ProtocolDelegate;
 			sourceTree = "<group>";
@@ -210,6 +214,7 @@
 		5B8302EF28AD50AB005DF459 /* Test1 */ = {
 			isa = PBXGroup;
 			children = (
+				5B309F2228BE308600047D02 /* Data */,
 				5B4F494728BAAB3000D548AA /* SupportingFiles */,
 				5B162A1428AF683100331FF0 /* API Caller */,
 				5B4F494428BAAA9200D548AA /* ProtocolDelegate */,
@@ -383,7 +388,7 @@
 				5BE0C1CD28AFF620008E9AF6 /* TVCells.swift in Sources */,
 				5B1347C228AFC8340053C898 /* SelfConfigCellProtocol.swift in Sources */,
 				5B42ADB728AD79A80098B51C /* CustomTabBarController.swift in Sources */,
-				5B4F494928BAAB7200D548AA /* FavoritsDelegate.swift in Sources */,
+				5B4F494928BAAB7200D548AA /* FavoritsData.swift in Sources */,
 				5BD29F0D28BC07770012688D /* DataReformatter.swift in Sources */,
 				5B42ADB828AD79A80098B51C /* CustomTabBar.swift in Sources */,
 				5B61DA0F28B4191E004EBED0 /* UIStackView.swift in Sources */,
@@ -393,7 +398,6 @@
 				5B42ADB528AD79A80098B51C /* Extensions.swift in Sources */,
 				5BABB3BF28B4030B0044D79A /* MovieDescriptionViewController.swift in Sources */,
 				5BEAB2A628B78C1900D8C19C /* TitleCell.swift in Sources */,
-				5B247BE628B7AF3400946184 /* UIImageViewExtension.swift in Sources */,
 				5B4F494228BAA99100D548AA /* FavoriteViewController.swift in Sources */,
 				5B1347C528AFC92E0053C898 /* MovieCells.swift in Sources */,
 				5B42AD9F28AD712C0098B51C /* Bundle.swift in Sources */,
@@ -472,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -526,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

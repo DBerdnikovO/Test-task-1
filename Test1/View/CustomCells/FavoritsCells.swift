@@ -46,10 +46,10 @@ class FavoritsCells: UICollectionViewCell, SelfConfigCell {
         
         title.text = favorit.title?.original_name ?? favorit.title?.title
         date.text = reFormat(from: (favorit.title?.first_air_date ?? favorit.title?.release_date) ?? "ERROR DATA")
-        DispatchQueue.main.async {
-            self.movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(favorit.title?.poster_path ?? "")"))
-            self.movieImageView.contentMode = .scaleAspectFill
-        }
+        
+          movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(favorit.title?.poster_path ?? "")"))
+        movieImageView.contentMode = .scaleAspectFill
+        
     }
     
     private func setupContraints() {
