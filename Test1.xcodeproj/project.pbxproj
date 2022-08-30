@@ -24,7 +24,6 @@
 		5B4F494228BAA99100D548AA /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F494128BAA99100D548AA /* FavoriteViewController.swift */; };
 		5B4F494628BAAB1500D548AA /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F494528BAAB1500D548AA /* SectionHeader.swift */; };
 		5B4F494928BAAB7200D548AA /* FavoritsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F494828BAAB7200D548AA /* FavoritsData.swift */; };
-		5B61DA0F28B4191E004EBED0 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61DA0E28B4191E004EBED0 /* UIStackView.swift */; };
 		5B8302F128AD50AB005DF459 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8302F028AD50AB005DF459 /* AppDelegate.swift */; };
 		5B8302F328AD50AB005DF459 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8302F228AD50AB005DF459 /* SceneDelegate.swift */; };
 		5B8302F528AD50AB005DF459 /* MainMovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8302F428AD50AB005DF459 /* MainMovieController.swift */; };
@@ -34,7 +33,6 @@
 		5BABB3C128B404900044D79A /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BABB3C028B404900044D79A /* Gradient.swift */; };
 		5BABB3C328B412520044D79A /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BABB3C228B412520044D79A /* Cast.swift */; };
 		5BC3B3EA28B8016600D4B18C /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3B3E928B8016600D4B18C /* Footer.swift */; };
-		5BD29F0D28BC07770012688D /* DataReformatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD29F0C28BC07770012688D /* DataReformatter.swift */; };
 		5BD29F1528BCDB390012688D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BD29F1328BCDB390012688D /* Model.xcdatamodeld */; };
 		5BDAF4E228AE2A6900B2716F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDAF4E128AE2A6900B2716F /* Color.swift */; };
 		5BE0C1CD28AFF620008E9AF6 /* TVCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0C1CC28AFF620008E9AF6 /* TVCells.swift */; };
@@ -63,7 +61,6 @@
 		5B4F494128BAA99100D548AA /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		5B4F494528BAAB1500D548AA /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		5B4F494828BAAB7200D548AA /* FavoritsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritsData.swift; sourceTree = "<group>"; };
-		5B61DA0E28B4191E004EBED0 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		5B8302ED28AD50AB005DF459 /* Test1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8302F028AD50AB005DF459 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B8302F228AD50AB005DF459 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +72,6 @@
 		5BABB3C028B404900044D79A /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		5BABB3C228B412520044D79A /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 		5BC3B3E928B8016600D4B18C /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
-		5BD29F0C28BC07770012688D /* DataReformatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReformatter.swift; sourceTree = "<group>"; };
 		5BD29F1428BCDB390012688D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		5BDAF4E128AE2A6900B2716F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5BE0C1CC28AFF620008E9AF6 /* TVCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCells.swift; sourceTree = "<group>"; };
@@ -120,9 +116,7 @@
 				5B42AD9E28AD712C0098B51C /* Bundle.swift */,
 				5B1347BF28AFC8120053C898 /* UIViewController.swift */,
 				5BDAF4E128AE2A6900B2716F /* Color.swift */,
-				5B61DA0E28B4191E004EBED0 /* UIStackView.swift */,
 				5BABB3C028B404900044D79A /* Gradient.swift */,
-				5BD29F0C28BC07770012688D /* DataReformatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -389,9 +383,7 @@
 				5B1347C228AFC8340053C898 /* SelfConfigCellProtocol.swift in Sources */,
 				5B42ADB728AD79A80098B51C /* CustomTabBarController.swift in Sources */,
 				5B4F494928BAAB7200D548AA /* FavoritsData.swift in Sources */,
-				5BD29F0D28BC07770012688D /* DataReformatter.swift in Sources */,
 				5B42ADB828AD79A80098B51C /* CustomTabBar.swift in Sources */,
-				5B61DA0F28B4191E004EBED0 /* UIStackView.swift in Sources */,
 				5B42ADB428AD79A80098B51C /* CustomTabItem.swift in Sources */,
 				5B42ADB628AD79A80098B51C /* CustomItemView.swift in Sources */,
 				5B162A1828AF687500331FF0 /* Title.swift in Sources */,

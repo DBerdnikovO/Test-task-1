@@ -9,9 +9,6 @@ import UIKit
 
 extension UIViewController {
     
-   // return self.configure(collectionView: collectionView, cellType: MovieCells.self, with: title, for: indexPath)
-    
-    
     
      func configure<T: SelfConfigCell, U:Hashable>(collectionView: UICollectionView, cellType: T.Type, with value: U, for indexPath: IndexPath)-> T {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reusedId, for: indexPath)
