@@ -12,6 +12,11 @@ class FavoritsCells: UICollectionViewCell, SelfConfigCell {
     
     let title : UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+
         label.textColor = .titleColor()
         return label
     }()
@@ -59,7 +64,6 @@ class FavoritsCells: UICollectionViewCell, SelfConfigCell {
         movieImageView.layer.masksToBounds = true
         movieImageView.layer.cornerRadius = 10
         
-        title.translatesAutoresizingMaskIntoConstraints = false
         date.translatesAutoresizingMaskIntoConstraints = false
         movieImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -77,7 +81,8 @@ class FavoritsCells: UICollectionViewCell, SelfConfigCell {
         
         NSLayoutConstraint.activate([
             title.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            title.topAnchor.constraint(equalTo: self.topAnchor,constant: 20)
+            title.topAnchor.constraint(equalTo: self.topAnchor,constant: 20),
+            title.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([
