@@ -14,7 +14,7 @@ class FavoritsDelegate {
     
     var request: [NSManagedObject] = []
                 
-    var casts : [Cast:Int] = [:]
+    var casts : [Int:Cast] = [:]
 
     init() {
     }
@@ -47,49 +47,21 @@ class FavoritsDelegate {
     }
     
     func getIdFav() -> [Int] {
-        return Array(casts.values)
+        return Array(casts.keys)
     }
     
-    func del(deletecast: Cast) {
-        for value in casts.keys{
-            if value == deletecast{
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                         return
-                       }
-                let managedContext = appDelegate.persistentContainer.viewContext
-                for val in request {
-                    if val.value(forKeyPath: "id") as? Int == value.title?.id  {
-                        
-                        managedContext.delete(val)
-                   //     casts[value] = nil
-                        
-                        casts.removeValue(forKey: deletecast)
-                        print("I DELETE CAST \(deletecast)")
-                        print(casts)
-                        do {
-                            try  managedContext.save()
-                        } catch let error as NSError {
-                            print("Could not fetch. \(error), \(error.userInfo)")
-
-                        }
-                    }
-                }
-            }
-        }
-    }
     
     func deleteFav(deletecast: Cast) {
-        for value in casts.keys{
-            print(value)
-            if value.title?.id == deletecast.title?.id{
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                          return
                        }
                 let managedContext = appDelegate.persistentContainer.viewContext
                 for val in request {
-                    if (val.value(forKeyPath: "id") as! Int) == value.title?.id  {
+                    if (val.value(forKeyPath: "id") as! Int) == deletecast.title!.id  {
+                        print((val.value(forKeyPath: "id") as! Int))
+                        print(deletecast.title!.id)
                         managedContext.delete(val)
-                        casts.removeValue(forKey: value)
+                        casts.removeValue(forKey: deletecast.title!.id)
                         do {
                             try  managedContext.save()
                         } catch let error as NSError {
@@ -98,8 +70,6 @@ class FavoritsDelegate {
                         }
                     }
                 }
-            }
-        }
     }
     
     
@@ -119,20 +89,20 @@ class FavoritsDelegate {
         }
 
         for a in request {
-            casts[(Cast(title: Title(id: (a.value(forKeyPath: "id") as? Int)!,
-                                         title: a.value(forKeyPath: "title") as? String,
-                                         media_type: a.value(forKeyPath: "media_type") as? String,
-                                         backdrop_path: a.value(forKeyPath: "backdrop_path") as? String,
-                                         original_name: a.value(forKeyPath: "original_name") as? String,
-                                         poster_path: a.value(forKeyPath: "poster_path") as? String,
-                                         overview: a.value(forKeyPath: "overview") as? String,
-                                         release_date: a.value(forKeyPath: "release_date") as? String,
-                                         vote_average: a.value(forKeyPath: "vote_average") as? Double,
-                                         first_air_date: a.value(forKeyPath: "first_air_date") as? String), cast: nil))] = (a.value(forKeyPath: "id") as? Int)!
+            casts[(a.value(forKeyPath: "id") as? Int)!] = (Cast(title: Title(id: (a.value(forKeyPath: "id") as? Int)!,
+                                                                             title: a.value(forKeyPath: "title") as? String,
+                                                                             media_type: a.value(forKeyPath: "media_type") as? String,
+                                                                             backdrop_path: a.value(forKeyPath: "backdrop_path") as? String,
+                                                                             original_name: a.value(forKeyPath: "original_name") as? String,
+                                                                             poster_path: a.value(forKeyPath: "poster_path") as? String,
+                                                                             overview: a.value(forKeyPath: "overview") as? String,
+                                                                             release_date: a.value(forKeyPath: "release_date") as? String,
+                                                                             vote_average: a.value(forKeyPath: "vote_average") as? Double,
+                                                                             first_air_date: a.value(forKeyPath: "first_air_date") as? String), cast: nil))
   
         }
         
-        return Array(casts.keys)
+        return Array(casts.values)
     }
     
     
