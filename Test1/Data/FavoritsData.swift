@@ -52,24 +52,24 @@ class FavoritsDelegate {
     
     
     func deleteFav(deletecast: Cast) {
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                         return
-                       }
-                let managedContext = appDelegate.persistentContainer.viewContext
-                for val in request {
-                    if (val.value(forKeyPath: "id") as! Int) == deletecast.title!.id  {
-                        print((val.value(forKeyPath: "id") as! Int))
-                        print(deletecast.title!.id)
-                        managedContext.delete(val)
-                        casts.removeValue(forKey: deletecast.title!.id)
-                        do {
-                            try  managedContext.save()
-                        } catch let error as NSError {
-                            print("Could not fetch. \(error), \(error.userInfo)")
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                 return
+               }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        for val in request {
+            if (val.value(forKeyPath: "id") as! Int) == deletecast.title!.id  {
+                print((val.value(forKeyPath: "id") as! Int))
+                print(deletecast.title!.id)
+                managedContext.delete(val)
+                casts.removeValue(forKey: deletecast.title!.id)
+                do {
+                    try  managedContext.save()
+                } catch let error as NSError {
+                    print("Could not fetch. \(error), \(error.userInfo)")
 
-                        }
-                    }
                 }
+            }
+        }
     }
     
     
@@ -98,7 +98,8 @@ class FavoritsDelegate {
                                                                              overview: a.value(forKeyPath: "overview") as? String,
                                                                              release_date: a.value(forKeyPath: "release_date") as? String,
                                                                              vote_average: a.value(forKeyPath: "vote_average") as? Double,
-                                                                             first_air_date: a.value(forKeyPath: "first_air_date") as? String), cast: nil))
+                                                                             first_air_date: a.value(forKeyPath: "first_air_date") as? String),
+                                                                cast: nil))
   
         }
         
