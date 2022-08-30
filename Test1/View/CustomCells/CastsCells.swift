@@ -14,6 +14,8 @@ class CastsCells: UICollectionViewCell, SelfConfigCell {
     
     let avatarImage : UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        imageView.layer.cornerRadius = imageView.frame.height / 2
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -84,10 +86,7 @@ class CastsCells: UICollectionViewCell, SelfConfigCell {
             roleActor.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
             roleActor.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5)
         ])
-        
-       
-        avatarImage.layer.cornerRadius = avatarImage.frame.height / 2
-        avatarImage.clipsToBounds = true
+    
     }
     
     

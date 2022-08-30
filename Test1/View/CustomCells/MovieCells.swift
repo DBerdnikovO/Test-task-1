@@ -37,10 +37,8 @@ class MovieCells: UICollectionViewCell, SelfConfigCell {
         
         date.text = reFormat(from: release_date)
         date.textColor = .dateColor()
-        
-        DispatchQueue.main.async {
-            self.movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path!)"))
-        }
+
+        movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path!)"))
     }
     
     private func setupContraints() {
