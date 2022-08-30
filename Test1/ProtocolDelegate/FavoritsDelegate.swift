@@ -13,13 +13,7 @@ class FavoritsDelegate {
     static let shared = FavoritsDelegate()
     
     var request: [NSManagedObject] = []
-    
-    var e = 0
-    
-    var cae : [Cast] = []
-    
-    var ca : Cast = Cast(title: nil, cast: nil)
-    
+                
     var casts : [Cast:Int] = [:]
 
     init() {
@@ -29,59 +23,85 @@ class FavoritsDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addCast(newCast: Cast) {
-        casts[newCast] = newCast.title?.id
-        saveUserData()
+    func addCast(new: Cast) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+          return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let newCast = NSEntityDescription.insertNewObject(forEntityName: "SavedCast", into: context)
+        
+        
+        newCast.setValue(new.title?.id, forKey: "id")
+        newCast.setValue(new.title?.title, forKey: "title")
+        newCast.setValue(new.title?.media_type, forKey: "media_type")
+        newCast.setValue(new.title?.backdrop_path, forKey: "backdrop_path")
+        newCast.setValue(new.title?.original_name, forKey: "original_name")
+        newCast.setValue(new.title?.poster_path, forKey: "poster_path")
+        newCast.setValue(new.title?.overview, forKey: "overview")
+        newCast.setValue(new.title?.release_date, forKey: "release_date")
+        newCast.setValue(new.title?.vote_average, forKey: "vote_average")
+        newCast.setValue(new.title?.first_air_date, forKey: "first_air_date")
+
     }
     
     func getIdFav() -> [Int] {
         return Array(casts.values)
     }
     
-    func getCast() -> [Cast] {
-        return Array(casts.keys)
-    }
-    
-    func deleteFav(deletecast: Cast) {
-        for key in casts.keys{
-            if key == deletecast {
-                casts.removeValue(forKey: key)
+    func del(deletecast: Cast) {
+        for value in casts.keys{
+            if value == deletecast{
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                         return
+                       }
+                let managedContext = appDelegate.persistentContainer.viewContext
+                for val in request {
+                    if val.value(forKeyPath: "id") as? Int == value.title?.id  {
+                        
+                        managedContext.delete(val)
+                   //     casts[value] = nil
+                        
+                        casts.removeValue(forKey: deletecast)
+                        print("I DELETE CAST \(deletecast)")
+                        print(casts)
+                        do {
+                            try  managedContext.save()
+                        } catch let error as NSError {
+                            print("Could not fetch. \(error), \(error.userInfo)")
+
+                        }
+                    }
+                }
             }
         }
     }
     
-    func saveUserData() {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-          return
-        }
-        
-        let context = appDelegate.persistentContainer.viewContext
-       
-        for castTitle in casts.keys {
-            
-            let newCast = NSEntityDescription.insertNewObject(forEntityName: "SavedCast", into: context)
+    func deleteFav(deletecast: Cast) {
+        for value in casts.keys{
+            print(value)
+            if value.title?.id == deletecast.title?.id{
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                         return
+                       }
+                let managedContext = appDelegate.persistentContainer.viewContext
+                for val in request {
+                    if (val.value(forKeyPath: "id") as! Int) == value.title?.id  {
+                        managedContext.delete(val)
+                        casts.removeValue(forKey: value)
+                        do {
+                            try  managedContext.save()
+                        } catch let error as NSError {
+                            print("Could not fetch. \(error), \(error.userInfo)")
 
-            newCast.setValue(castTitle.title?.id, forKey: "id")
-            newCast.setValue(castTitle.title?.title, forKey: "title")
-            newCast.setValue(castTitle.title?.media_type, forKey: "media_type")
-            newCast.setValue(castTitle.title?.backdrop_path, forKey: "backdrop_path")
-            newCast.setValue(castTitle.title?.original_name, forKey: "original_name")
-            newCast.setValue(castTitle.title?.poster_path, forKey: "poster_path")
-            newCast.setValue(castTitle.title?.overview, forKey: "overview")
-            newCast.setValue(castTitle.title?.release_date, forKey: "release_date")
-            newCast.setValue(castTitle.title?.vote_average, forKey: "vote_average")
-            newCast.setValue(castTitle.title?.first_air_date, forKey: "first_air_date")
-
+                        }
+                    }
+                }
+            }
         }
-        do {
-            try context.save()
-            print("Success")
-        } catch {
-            print("ERROR SACING: \(error)")
-        }
-       
     }
+    
     
     func loadUserData() -> [Cast] {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

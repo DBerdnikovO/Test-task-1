@@ -95,6 +95,7 @@ class MovieDescriptionViewController: UIViewController {
         DispatchQueue.main.async {
             self.getCast()
         }
+        
     }
     
     @objc func buttonAction(sender: UIButton!) {
@@ -105,9 +106,10 @@ class MovieDescriptionViewController: UIViewController {
     @objc func goFavorits(sender: UIButton!) {
         let isLike : Bool = inFav()
         if isLike == false {
-            FavoritsDelegate.shared.addCast(newCast: self.castInfo)
+            FavoritsDelegate.shared.addCast(new: self.castInfo)
         }
         else {
+            print("TRY DELETE")
             FavoritsDelegate.shared.deleteFav(deletecast: self.castInfo)
         }
     }

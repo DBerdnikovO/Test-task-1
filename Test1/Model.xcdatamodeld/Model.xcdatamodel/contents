@@ -4,7 +4,7 @@
         <attribute name="backdrop_path" optional="YES" attributeType="String"/>
         <attribute name="character" optional="YES" attributeType="String"/>
         <attribute name="first_air_date" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="media_type" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="original_name" optional="YES" attributeType="String"/>

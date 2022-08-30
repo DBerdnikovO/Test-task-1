@@ -39,12 +39,15 @@ class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //       getCount()
+        print("I APPEAR")
         getUserData()
+       // print(getCast.)
+        reloadData()
     }
     
     func getUserData() {
         getCast = FavoritsDelegate.shared.loadUserData()
-        self.reloadData()
+        reloadData()
     }
     
 //    func getCount() {
@@ -64,10 +67,11 @@ class FavoriteViewController: UIViewController {
     }
     
     private func reloadData() {
+        getCast = FavoritsDelegate.shared.loadUserData()
         var snapshot = NSDiffableDataSourceSnapshot<Section, Cast>()
         
         snapshot.appendSections([.favorit])
-        
+     //   print(FavoritsDelegate.shared.loadUserData())
         snapshot.appendItems(getCast, toSection: .favorit)
     
 
