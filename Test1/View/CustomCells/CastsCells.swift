@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class CastsCells: UICollectionViewCell, SelfConfigCell {
+final class CastsCells: UICollectionViewCell, SelfConfigCell {
     
     static var reusedId: String = "CastCells"
     

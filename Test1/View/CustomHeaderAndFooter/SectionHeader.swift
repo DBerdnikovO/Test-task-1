@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SectionHeader:UICollectionReusableView {
+final class SectionHeader:UICollectionReusableView {
     
     static let reuseId = "SectionHeader"
     

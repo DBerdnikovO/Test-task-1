@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class FavoriteViewController: UIViewController {
+final class FavoriteViewController: UIViewController {
     
     var getCast: [Cast] = []
     
@@ -27,10 +27,8 @@ class FavoriteViewController: UIViewController {
         getUserData()
         setupCollectionView()
         createDataSource()
-        reloadData()
         
        
-        
         view.backgroundColor = .red
         
     }
@@ -38,7 +36,6 @@ class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getUserData()
-        reloadData()
     }
     
     func getUserData() {

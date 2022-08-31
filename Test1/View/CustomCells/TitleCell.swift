@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class TitleCell: UICollectionReusableView,  SelfConfigCell {
+final class TitleCell: UICollectionReusableView,  SelfConfigCell {
     
      
     

@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 
-class MainMovieController: UIViewController {
+final class MainMovieController: UIViewController {
     
     
     
@@ -64,6 +64,7 @@ class MainMovieController: UIViewController {
     
     private func getTrandingMovies() {
         APICaller.shared.getTrendingMovies { [weak self] result in
+            
                 switch result {
                     
                 case .success(let result):

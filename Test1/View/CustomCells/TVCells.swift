@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 
-class TVCells: UICollectionViewCell, SelfConfigCell {
+final class TVCells: UICollectionViewCell, SelfConfigCell {
     static var reusedId: String = "TVCells"
     
     let title = UILabel()

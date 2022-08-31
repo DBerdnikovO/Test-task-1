@@ -57,9 +57,11 @@ class FavoritsDelegate {
                }
         let managedContext = appDelegate.persistentContainer.viewContext
         for val in request {
-            if (val.value(forKeyPath: "id") as! Int) == deletecast.title!.id  {
+            guard let title = deletecast.title?.id else { return }
+            guard let valuetitle = val.value(forKey: "id") else { return }
+            if valuetitle as! Int == title {
                 managedContext.delete(val)
-                casts.removeValue(forKey: deletecast.title!.id)
+                casts.removeValue(forKey: title)
                 do {
                     try  managedContext.save()
                 } catch let error as NSError {

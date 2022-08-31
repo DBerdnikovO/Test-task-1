@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 
-class MovieCells: UICollectionViewCell, SelfConfigCell {
+final class MovieCells: UICollectionViewCell, SelfConfigCell {
     static var reusedId: String = "MovieCell"
     
     let title = UILabel()
@@ -38,7 +38,8 @@ class MovieCells: UICollectionViewCell, SelfConfigCell {
         date.text = reFormat(from: release_date)
         date.textColor = .dateColor()
 
-        movieImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path!)"))
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path ?? "")") else { return }
+        movieImageView.kf.setImage(with: url)
     }
     
     private func setupContraints() {
@@ -82,10 +83,6 @@ class MovieCells: UICollectionViewCell, SelfConfigCell {
         toFormatter.locale = Locale(identifier: "en_US_POSIX")
       toFormatter.dateFormat = "MMM d, yyyy"
 
-        
-        
-        
-        
       guard let date = fromFormatter.date(from: dateStr) else { return nil }
 
       return toFormatter.string(from: date)

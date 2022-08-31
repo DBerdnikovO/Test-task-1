@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class FavoritsCells: UICollectionViewCell, SelfConfigCell {
+final class FavoritsCells: UICollectionViewCell, SelfConfigCell {
     
     let title : UILabel = {
         let label = UILabel()

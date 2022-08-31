@@ -8,7 +8,7 @@
 import Kingfisher
 import UIKit
 
-class MovieDescriptionViewController: UIViewController {
+final class MovieDescriptionViewController: UIViewController {
     
     var viewcontroller = UIViewController()
     
