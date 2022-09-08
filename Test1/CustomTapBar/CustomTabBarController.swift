@@ -24,12 +24,12 @@ class CustomTabBarController: UITabBarController {
         view.layoutIfNeeded()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = false
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(self.action(sender:)))
-        
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.isNavigationBarHidden = false
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(self.action(sender:)))
+//        
+//    }
     
     @objc func action(sender: UIBarButtonItem) {
         // Function body goes here
@@ -54,6 +54,7 @@ class CustomTabBarController: UITabBarController {
         
         selectedIndex = 0
         let controllers = CustomTabItem.allCases.map { $0.viewController }
+        
         setViewControllers(controllers, animated: true)
     }
 

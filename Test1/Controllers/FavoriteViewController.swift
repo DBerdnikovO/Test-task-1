@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-final class FavoriteViewController: UIViewController {
+class FavoriteViewController: UIViewController {
     
     var getCast: [Cast] = []
     
@@ -27,8 +27,10 @@ final class FavoriteViewController: UIViewController {
         getUserData()
         setupCollectionView()
         createDataSource()
+        reloadData()
         
        
+        
         view.backgroundColor = .red
         
     }
@@ -36,6 +38,7 @@ final class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getUserData()
+        reloadData()
     }
     
     func getUserData() {
@@ -80,8 +83,8 @@ extension FavoriteViewController: UICollectionViewDelegate {
         switch section {
         case .favorit:
             let titleInfo = MovieDescriptionViewController(title: title.title!)
-            titleInfo.modalPresentationStyle = .fullScreen
-               present(titleInfo, animated: true)
+            self.navigationController?.pushViewController(titleInfo, animated:
+                true)
         }
         
     }

@@ -33,7 +33,7 @@ extension CustomTabItem {
         case .profile:
             return UIImage(systemName: "person.crop.circle.fill")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
         case .play:
-            return UIImage(systemName: "play.circle")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
+            return UIImage(systemName: "play.circle.fill")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
         case .favorite:
             return UIImage(systemName: "bookmark.circle.fill")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
         case .home:

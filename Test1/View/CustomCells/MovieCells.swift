@@ -10,6 +10,7 @@ import Kingfisher
 
 
 final class MovieCells: UICollectionViewCell, SelfConfigCell {
+    
     static var reusedId: String = "MovieCell"
     
     let title = UILabel()
@@ -39,7 +40,10 @@ final class MovieCells: UICollectionViewCell, SelfConfigCell {
         date.textColor = .dateColor()
 
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(movie.poster_path ?? "")") else { return }
+        
+        
         movieImageView.kf.setImage(with: url)
+        
     }
     
     private func setupContraints() {

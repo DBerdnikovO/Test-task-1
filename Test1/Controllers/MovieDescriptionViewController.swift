@@ -11,30 +11,9 @@ import UIKit
 final class MovieDescriptionViewController: UIViewController {
     
     var viewcontroller = UIViewController()
+
     
-    
-    let backButton: UIButton = {
-       let button = UIButton()
-        
-        let image = UIImage(systemName: "chevron.backward")?.withRenderingMode(.alwaysTemplate)
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .black, scale: .large)
-        button.setImage(image , for: .normal)
-        button.tintColor = .red
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    let favoriteButton: UIButton = {
-       let button = UIButton()
-        
-        let image = UIImage(systemName: "bookmark")?.withRenderingMode(.alwaysTemplate)
-        button.setImage(image , for: .normal)
-        button.tintColor = .red
-        button.addTarget(self, action: #selector(goFavorits), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+
     
     
     private var titleMovie : Title
@@ -64,7 +43,7 @@ final class MovieDescriptionViewController: UIViewController {
     let image = UIImageView()
     let overview = UILabel()
     let titleName = UILabel()
-    let gradientView = Gradient(from: .top, to: .bottom, startColor: #colorLiteral(red: 0.3159078062, green: 0.3159078062, blue: 0.3159078062, alpha: 1), endColor: UIColor(white: 0.1, alpha: 0.1))
+
     
     init(title: Title){
         titleMovie = title
@@ -89,6 +68,8 @@ final class MovieDescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(goFavorits))
         setupCollectionView()
         createDataSource()
         reloadData()
@@ -100,7 +81,7 @@ final class MovieDescriptionViewController: UIViewController {
     }
     
     
-    @objc func goFavorits(sender: UIButton!) {
+    @objc func goFavorits() {
         let isLike : Bool = inFav()
         if isLike == false {
             FavoritsDelegate.shared.addCast(new: self.castInfo)
@@ -144,14 +125,8 @@ final class MovieDescriptionViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .backgroundColor()
         
-        gradientView.translatesAutoresizingMaskIntoConstraints = false
-
-
         view.addSubview(collectionView)
-        view.addSubview(gradientView)
-        view.addSubview(backButton)
-        view.addSubview(favoriteButton)
-        
+
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
 
@@ -165,21 +140,7 @@ final class MovieDescriptionViewController: UIViewController {
       
         collectionView.register(CastsCells.self, forCellWithReuseIdentifier: CastsCells.reusedId)
         
-        NSLayoutConstraint.activate([
-            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
-        ])
-        
-        NSLayoutConstraint.activate([
-            favoriteButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            favoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        ])
-        
-        NSLayoutConstraint.activate([
-                    gradientView.topAnchor.constraint(equalTo: view.topAnchor),
-                    gradientView.widthAnchor.constraint(equalTo: view.widthAnchor),
-                    gradientView.heightAnchor.constraint(equalToConstant: 100)
-                ])
+
         
         
     }
@@ -242,8 +203,7 @@ extension MovieDescriptionViewController {
                 
                 NSLayoutConstraint.activate([
                     header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                    header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-                    header.heightAnchor.constraint(equalToConstant: 550)
+                    header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
                 ])
                 return header
             }

@@ -19,9 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                   options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        navigationController.navigationBar.prefersLargeTitles = true
+       // navigationController.navigationBar.prefersLargeTitles = true
         navigationController.setViewControllers([CustomTabBarController()], animated: true)
         window?.rootViewController = navigationController
+
+               window?.makeKeyAndVisible()
         window?.makeKeyAndVisible()
        }
 

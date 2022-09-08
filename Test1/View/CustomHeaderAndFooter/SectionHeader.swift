@@ -5,7 +5,7 @@
 //  Created by Данила Бердников on 18.08.2022.
 //
 
-import Foundation
+
 import UIKit
 
 final class SectionHeader:UICollectionReusableView {

@@ -104,7 +104,8 @@ final class TitleCell: UICollectionReusableView,  SelfConfigCell {
         NSLayoutConstraint.activate([
             posterImage.heightAnchor.constraint(equalToConstant: 300),
             posterImage.widthAnchor.constraint(equalTo: self.widthAnchor),
-            posterImage.topAnchor.constraint(equalTo: self.topAnchor)
+            posterImage.topAnchor.constraint(equalTo: self.topAnchor),
+            
         ])
         
         NSLayoutConstraint.activate([

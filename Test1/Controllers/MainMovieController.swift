@@ -8,10 +8,22 @@
 import UIKit
 import Kingfisher
 
+extension UIViewController {
+
+    /**
+     *  Height of status bar + navigation bar (if navigation bar exist)
+     */
+
+    var topbarHeight: CGFloat {
+        return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
+    }
+}
 
 final class MainMovieController: UIViewController {
     
-    
+ //   let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44))
+  //  view.addSubview(navBar)
     
     let viewController = UIViewController()
 
@@ -41,9 +53,6 @@ final class MainMovieController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewController.navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
-
         setupCollectionView()
         createDataSource()
         reloadData()
@@ -139,14 +148,14 @@ extension MainMovieController: UICollectionViewDelegate {
         
         switch section {
         case .popularFilms:
-                //let titleInfo = TitleViewController(title: title)
+            
             let titleInfo = MovieDescriptionViewController(title: cast)
-            titleInfo.modalPresentationStyle = .fullScreen
-               present(titleInfo, animated: true)
+            self.navigationController?.pushViewController(titleInfo, animated:
+                true)
         case .popularTVseries:
             let titleInfo = MovieDescriptionViewController(title: cast)
-            titleInfo.modalPresentationStyle = .fullScreen
-               present(titleInfo, animated: true)
+            self.navigationController?.pushViewController(titleInfo, animated:
+                true)
         }
         
     }
@@ -195,7 +204,9 @@ extension MainMovieController {
             case .popularTVseries:
                 return self.TVSeries()
             }
+            
         }
+        
         return layout
     }
     
@@ -231,7 +242,7 @@ extension MainMovieController {
         section.interGroupSpacing = 20
         let sectionHeader = sectionHeader()
         section.boundarySupplementaryItems = [sectionHeader]
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 20, bottom: 0, trailing: 20)
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 20, bottom: 50, trailing: 20)
         section.orthogonalScrollingBehavior = .continuous
         
         return section

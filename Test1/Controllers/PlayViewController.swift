@@ -16,5 +16,7 @@ class PlayViewController: UITabBarController {
         view.backgroundColor = .cyan
         
     }
-    
+    deinit{
+        print("I DEINIT")
+    }
 }
